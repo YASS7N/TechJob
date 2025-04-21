@@ -1,0 +1,178 @@
+/*  CSS VARIABLES FOR PRE-DEFINED COLOR SCHEME  */
+:root {
+    --primary: #3F72AF;
+    --primary-light: #5488c7;
+    --secondary: #00ADB5;
+    --secondary-light: #00c2cc;
+    --dark: #393E46;
+    --dark-light: #4d535d;
+    --white: #ffffff;
+    --gray: #f5f5f5;
+}
+
+/* Hero section styles */
+.hero {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 1.5rem 3rem 3rem;
+    color: var(--white);
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+    width: 50%;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.hero h6 {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.search-box {
+    background: var(--white);
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.input-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+    color: #9CA3AF;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #9CA3AF;
+}
+
+.search-btn {
+    background: var(--secondary);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+    background: var(--secondary-light);
+}
+
+.image-animation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    transform: translateY(30px);  
+    z-index: 999; 
+}
+
+.rotating-circle {
+    position: relative; 
+    width: 500px;
+    height: 500px;    
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    overflow: hidden; 
+    z-index: inherit;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    transition: transform 0.5s;
+    animation: circleRotate 8s linear infinite;
+    /* bring to center of parent, so that rotation can be about axis*/
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    z-index: inherit;
+}
+
+.rotating-circle:hover {
+    animation: none;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    z-index: inherit;
+}
+
+.image-container:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.image-container:nth-child(2) {
+    animation-delay: -2.67s;
+}
+
+.image-container:nth-child(3) {
+    animation-delay: -5.33s;
+}
+
+@keyframes circleRotate {
+    0% {
+        transform: translate(-50%, -50%) /* Keep centered */
+                   rotate(0deg) 
+                   translateX(150px) /* radius of circle of rotation */
+                   rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) /* Keep centered */
+                   rotate(360deg) 
+                   translateX(150px) /* radius of circle of rotation */
+                   rotate(-360deg);
+    }
+}

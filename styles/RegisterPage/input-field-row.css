@@ -1,0 +1,91 @@
+/*  CSS VARIABLES FOR PRE-DEFINED COLOR SCHEME  */
+:root {
+    --white: #ffffff;
+    --back: #ecf1f1;
+    --black: #000;
+    --dark: #393E46;
+}
+
+.form-fields-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 55%;
+    width: 95%;
+    gap: 20px;
+}
+
+.input-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+.input-group-register-form {
+    position: relative;
+    width: 100%;
+}
+
+.input-group-register-form input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid var(--black);
+    background-color: transparent;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.input-group-register-form label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    font-size: 16px;
+    color: var(--black);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-group-register-form input:focus,
+.input-group-register-form input:not(:placeholder-shown) {
+    border-color: var(--black);
+}
+
+.input-group-register-form input:focus + label,
+.input-group-register-form input:not(:placeholder-shown) + label {
+    top: -15px;
+    font-size: 12px;
+    color: var(--black);
+}
+
+.role-selection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 25px;
+}
+
+.role-title {
+    font-size: 16px;
+    color: var(--black);
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    gap:20px
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}

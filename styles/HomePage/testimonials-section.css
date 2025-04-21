@@ -1,0 +1,132 @@
+/*  CSS VARIABLES FOR PRE-DEFINED COLOR SCHEME  */
+:root {
+    --white:#fff;
+    --black:#000;
+    --heading:#1e293b;
+    --primary-blue:#2563eb;
+    --light-gray:#e2e8f0;
+    --gray:#64748b;
+    --dark-blue:#1e293b;
+    --card-back:#ddd;
+}
+
+.testimonials {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--dark-blue);
+    margin-bottom: 50px;
+}
+
+.testimonials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.testimonial-card {
+    background: var(--card-back);
+    border-radius: 16px;
+    padding: 32px;
+    width: 350px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Make middle a different one for better UX  :) */
+.testimonial-card.accent {
+    background:var(--primary-blue);
+    color: var(--white);
+}
+
+.testimonial-card.accent .author-name,
+.testimonial-card.accent .quote-icon {
+    color: var(--white);
+}
+
+.testimonial-card.accent .author-role {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.quote-icon {
+    font-size: 64px;
+    line-height: 1;
+    font-family: Georgia, serif;
+    color: var(--primary-blue);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    opacity: 0.1;
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 20px 0 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto;
+}
+
+
+/********* STYLES FOR ITEMS INSIDE EACH TESTIMONIAL CARD *********/
+.author-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--light-gray);
+}
+
+.author-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-info {
+    flex: 1;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--dark-blue);
+    margin: 0 0 4px;
+}
+
+.author-role {
+    font-size: 0.875rem;
+    color: var(--dark-gray);
+    margin: 0;
+}
+
+.no-testimonials {
+    text-align: center;
+    padding: 20px;
+    grid-column: 1 / -1; /* Spans all columns */
+    background-color: var(--gray);
+    border-radius: 8px;
+}

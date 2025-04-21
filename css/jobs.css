@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0d0f1b;
+    --card-glass: rgba(255, 255, 255, 0.05);
+    --highlight: #18dcff;
+    --highlight-2: #7d5fff;
+    --success: #05c46b;
+    --text-main: #f1f2f6;
+    --text-sub: #a4b0be;
+    --blur: blur(16px);
+    --radius: 20px;
+    --shadow: 0 20px 30px rgba(0, 0, 0, 0.35);
+    --transition: 0.35s ease;
+    --font: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-family: var(--font);
+    margin-top: 100px;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.page-title {
+    font-family: 'Orbitron', sans-serif; /* bold futuristic font */
+    font-size: 3.5rem;
+    margin: 40px auto;
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(90deg, #00e0ff, #3a6eff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+    animation: glowText 2s ease-in-out infinite alternate;
+}
+
+
+.job-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.job-item {
+    background: var(--card-glass);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: var(--blur);
+    border-radius: var(--radius);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.job-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.job-item h3 {
+    font-size: 1.4rem;
+    color: var(--highlight);
+    margin-bottom: 15px;
+}
+
+.job-item p {
+    font-size: 0.95rem;
+    color: var(--text-sub);
+    margin-bottom: 8px;
+}
+
+.view-details,
+.apply-button {
+    margin-top: 15px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(5px);
+}
+
+.view-details {
+    background: linear-gradient(135deg, var(--highlight), var(--highlight-2));
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(24, 220, 255, 0.3);
+}
+
+.view-details:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(24, 220, 255, 0.5);
+}
+
+.apply-button {
+    background: linear-gradient(135deg, var(--success), #2ed573);
+    color: #fff;
+    margin-left: 10px;
+    box-shadow: 0 4px 20px rgba(5, 196, 107, 0.3);
+}
+
+.apply-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(5, 196, 107, 0.5);
+}
+
+.skills-container {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-badge {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--highlight);
+    color: var(--highlight);
+    font-weight: 600;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    transition: 0.25s ease;
+}
+
+.skill-badge:hover {
+    background: var(--highlight);
+    color: #0d0f1b;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    padding: 40px 20px;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: #1c1f2b;
+    padding: 30px;
+    max-width: 720px;
+    margin: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    color: var(--text-main);
+}
+
+.close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: var(--highlight);
+    cursor: pointer;
+    transition: color var(--transition);
+}
+
+.close:hover {
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.2rem;
+    }
+
+    .job-item {
+        padding: 20px;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .view-details,
+    .apply-button {
+        font-size: 0.85rem;
+        padding: 10px 14px;
+    }
+}

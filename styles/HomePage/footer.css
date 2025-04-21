@@ -1,0 +1,18 @@
+/*  CSS VARIABLES FOR PRE-DEFINED COLOR SCHEME  */
+:root {
+    --primary: #3F72AF;
+    --primary-light: #5488c7;
+    --secondary: #00ADB5;
+    --secondary-light: #00c2cc;
+    --dark: #393E46;
+    --dark-light: #4d535d;
+    --white: #ffffff;
+    --gray: #f5f5f5;
+}
+
+footer {
+    background: var(--dark-light);
+    color: var(--white);
+    padding: 2rem 5%;
+    text-align: center;
+}

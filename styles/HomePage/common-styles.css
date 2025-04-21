@@ -1,0 +1,139 @@
+/*  CSS VARIABLES FOR PRE-DEFINED COLOR SCHEME  */
+:root {
+    --dark: #393E46;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 30px;
+}
+
+/* THIS IS MAIN HEADING OF EVERY SECTION*/
+.section-title {
+    text-align: center;
+    color: var(--dark);
+    margin-bottom: 5rem;
+    font-size: 30px;
+}
+
+/* ========= MEDIA QUERIES FOR ADJUSTMENT FOR DIFFERENT SCREENS ========= */
+
+/*  TABLET SIZED DEVICES    */
+ @media (max-width: 1200px) {
+.hero {
+    flex-direction: column;
+    padding-top: 6rem;
+}
+
+.hero-content {
+    margin: 20% auto auto auto;
+    text-align: center;
+    width: 80%;
+}
+
+.image-animation-container {
+    display: none;
+}
+
+}
+
+/*  Medium sized devices    */
+@media (max-width: 900px) {
+    .logo {
+        display: none;
+    }
+    header {
+        padding: 30px 10%;
+    }
+    .nav-links {
+        margin: 0 auto;
+    }
+}    
+
+/*  Small devices adjustments   */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Adjustments very small sized devices */
+@media (max-width: 640px) {
+    .search-box {
+        padding: 0.5rem;
+    }
+    
+    .search-form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .input-wrapper, 
+    .search-btn {
+        width: 100%;
+    }
+    
+    .search-btn {
+        padding: 0.8rem;
+    }
+    .nav-links { 
+        display: none;
+    }
+    .logo {
+        display: block;
+        height: 60px;
+        width: 200px;
+        margin: 0 auto;
+    }
+    header {
+        padding: 15px 0;
+    }
+    .hero-content {
+        margin: 25% auto auto auto;
+        text-align: center;
+        width: 90%;
+    }
+    .search-btn {
+         padding: 0.3rem 1.5rem;
+    }
+}
+
+
+/*   TESTIMONIAL SECTION RESPONSIVE ADJUSTMENTS   */
+@media (max-width: 1100px) {
+    .testimonials-grid {
+        gap: 20px;
+    }
+
+    .testimonial-card {
+        width: calc(50% - 10px);
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .testimonials {
+        padding: 60px 0;
+    }
+}
