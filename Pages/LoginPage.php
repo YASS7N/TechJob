@@ -27,7 +27,7 @@
     </div>
     <div class="bottom-line">
       <p>Vous n'avez pas de compte ?
-        <a class="login-form-bottom-link" href="RegisterPage.php">Créez-en un maintenant !</a>
+        <a class="login-form-bottom-link" href="RolePage.php">Créez-en un maintenant !</a>
       </p>
     </div>
     <?php

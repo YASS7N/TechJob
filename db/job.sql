@@ -96,12 +96,26 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   CONSTRAINT `jobs_ibfk_2` FOREIGN KEY (`category`) REFERENCES `categories` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.jobs: ~4 rows (approximately)
-INSERT INTO `jobs` (`id`, `postedBy`, `category`, `title`, `companyName`, `location`, `salaryRange`, `duration`, `type`, `datePosted`, `skills`, `status`, `numberOfApplicants`, `description`, `requirements`, `specializations`, `experience`) VALUES
-	(16, 'at-67bf20cc7d63b', 1, 'Front end developer', 'YSNet', 'Meknes, Morocco', 'MAD 2000-5000', 'full-time', 'onsite', '2025-03-04 18:23:24', 'HTML CSS JAVASCRIPT BOOTSTRAP', 'closed', 0, 'bon travail', 'min 18 ans', '1', 'expert-level'),
-	(17, 'at-67bf20cc7d63b', 1, 'Back end developer', 'YSNet', 'Meknes, Morocco', 'MAD 8000-10000', 'full-time', 'onsite', '2025-04-18 15:07:08', 'PHP MYSQL etc..', 'active', 0, 'Description ', 'Exigences', '2', 'senior-level'),
-	(18, 'jl-680667769643c', 9, 'Designer', 'YSNet', 'Meknes, Morocco', 'MAD 5000-10000', 'full-time', 'onsite', '2025-04-21 16:43:20', 'Design', 'active', 0, 'ss', 'ss', '42', 'senior-level'),
-	(19, 'at-67bf20cc7d63b', 9, 'Designer', 'YSNet', 'Meknes, Morocco', 'MAD 2000-5000', 'contract', 'onsite', '2025-04-21 16:43:45', 'Design', 'active', 0, 'ss', 'ss', '41', 'entry-level');
+-- Dumping data for table job.jobs: ~0 rows (approximately)
+
+-- Dumping structure for table job.secteurs_activite
+CREATE TABLE IF NOT EXISTS `secteurs_activite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_secteur` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nom_secteur` (`nom_secteur`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table job.secteurs_activite: ~8 rows (approximately)
+INSERT INTO `secteurs_activite` (`id`, `nom_secteur`) VALUES
+	(5, 'Analyse de Données'),
+	(3, 'Cybersécurité'),
+	(2, 'Développement Mobile'),
+	(1, 'Développement Web'),
+	(7, 'Infogérance / Cloud'),
+	(4, 'Intelligence Artificielle'),
+	(6, 'Réseaux et Systèmes'),
+	(8, 'Support Technique');
 
 -- Dumping structure for table job.specializations
 CREATE TABLE IF NOT EXISTS `specializations` (
@@ -166,6 +180,21 @@ INSERT INTO `specializations` (`id`, `name`, `category_id`) VALUES
 	(49, 'Consultant en infrastructures réseaux', 10),
 	(50, 'Ingénieur en systèmes embarqués', 10);
 
+-- Dumping structure for table job.tailles_entreprise
+CREATE TABLE IF NOT EXISTS `tailles_entreprise` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `taille` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `taille` (`taille`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table job.tailles_entreprise: ~4 rows (approximately)
+INSERT INTO `tailles_entreprise` (`id`, `taille`) VALUES
+	(1, '1-10 employés'),
+	(2, '11-50 employés'),
+	(4, '200+ employés'),
+	(3, '51-200 employés');
+
 -- Dumping structure for table job.testimonials
 CREATE TABLE IF NOT EXISTS `testimonials` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -195,12 +224,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.users: ~2 rows (approximately)
-INSERT INTO `users` (`userId`, `fullname`, `username`, `email`, `phone`, `password`, `role`, `profile_picture`, `description`) VALUES
-	('1', 'yassin', 'yassin', 'yassin.fikri00@gmail.com', '0762695921', 'yassinelf', 'admin', NULL, NULL),
-	('at-67bf20cc7d63b', 'Ahmed test', 'test', 'dokomo7770@gmail.com', '0762695921', '$2y$10$igeY2gAPtzmO9MEStw.RJeUEN3T0h4MqKUuXDyLJc0gaUM9bSHEE6', 'employer', NULL, NULL),
-	('jl-680667769643c', 'Job Lister', 'JobLister', 'soufianos07@outlook.fr', '0762695921', '$2y$10$EaZ7vXCQFJ8xIn1ImcZqXeyC5vM7prLIgrYgtd7a11lUby/a5wKXS', 'employer', NULL, NULL),
-	('yf-67c5e1cd9a9c9', 'Yassin Fikri', 'YASS7N', 'yassin.fikri00@gmail.com', '', '$2y$10$jk2pKBhUHDL3CBVQ78QbdOofCnIzvSLUhg5HWMemHPi.TQefinCPi', 'applicant', 'uploads/68067f6139f00.png', '');
+-- Dumping data for table job.users: ~0 rows (approximately)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

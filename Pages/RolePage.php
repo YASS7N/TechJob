@@ -25,7 +25,7 @@
                 <i class="fas fa-user-graduate"></i>
                 Chercheur d'emploi
             </a>
-            <a href="./RegisterPage.php?role=employer" class="role-button employer">
+            <a href="./RegisterPageEmployer.php?role=employer" class="role-button employer">
                 <i class="fas fa-briefcase"></i>
                 Employeur
             </a>
