@@ -42,9 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($errors)) {
         $_SESSION['register_errors'] = $errors;
+        if ($role === 'employeur') {
+        header("Location: ../pages/RegisterPageEmployer.php");
+        } else {
         header("Location: ../pages/RegisterPage.php");
+        }
         exit();
-    }
+         }
 
     try {
         $userId = generateUserId($firstName, $lastName);
@@ -67,13 +71,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             $_SESSION['register_errors'] = ["Registration failed. Please try again."];
-            header("Location: ../pages/RegisterPage.php");
+            header("Location: ../pages/RolePage.php");
             exit();
         }
     } catch (Exception $e) {
         $_SESSION['register_errors'] = ["An error occurred. Please try again later."];
         error_log("Registration error: " . $e->getMessage());
-        header("Location: ../pages/RegisterPage.php");
+        header("Location: ../pages/RolePage.php");
         exit();
     }
 

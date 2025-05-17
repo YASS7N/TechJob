@@ -170,12 +170,12 @@
     filter: brightness(0.8) blur(5px);
   }
   
-  .blue-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.8); 
-    z-index: 1;
-  }
-  
+    .blue-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.8); 
+      z-index: 1;
+    }
+    
   
   
