@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   CONSTRAINT `jobs_ibfk_2` FOREIGN KEY (`category`) REFERENCES `categories` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.jobs: ~0 rows (approximately)
+-- Dumping data for table job.jobs: ~1 rows (approximately)
 
 -- Dumping structure for table job.secteurs_activite
 CREATE TABLE IF NOT EXISTS `secteurs_activite` (
@@ -224,7 +224,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.users: ~0 rows (approximately)
+-- Dumping data for table job.users: ~2 rows (approximately)
+INSERT INTO `users` (`userId`, `fullname`, `username`, `email`, `phone`, `password`, `role`, `profile_picture`, `description`) VALUES
+	('je-6828a8ed3f379', 'Job Employer', 'JobEmployer', 'yassin.fikri00@gmail.com', '0762695921', '$2y$10$scepp4g/KwVUEn8S.QX2ZOn9jB8QTzzO0FdYDY6n0sa4HeZfz1r4e', 'employer', NULL, NULL),
+	('yf-68289a9d0f474', 'Yassin Fikri', 'YASS7N', 'yassin.fikri00@gmail.com', '0762695921', '$2y$10$yjILOU8u6raKEo0QOs8FH.mTWClL5vzaqJidrKpVLPvUrZ.wn57RG', 'applicant', NULL, NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
