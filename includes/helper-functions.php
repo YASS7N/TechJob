@@ -55,19 +55,30 @@ function fetchCategoryName($categoryId) {
 function generateJobMarkup($job) {
     return "
     <div class='job-item' data-job-id='{$job['id']}'>
-        <h3 class='job-title'>{$job['title']}</h3>
-        <p class='company-name'>Company: {$job['companyName']}</p>
-        <p class='location'>Location: {$job['location']}</p>
-        <p class='salary'>Salary: {$job['salaryRange']}</p>
-        <p class='job-type'>Type: {$job['type']}</p>
-        <p class='duration'>Duration: {$job['duration']}</p>
-        <button class='view-details' onclick='openModal({$job['id']})'>View Details</button>
-        <form action='../Pages/JobApplication.php?jobId={$job['id']}' method='post' style='display:inline;'>
-            <input type='hidden' name='jobId' value='{$job['id']}'>
-            <button type='submit' class='apply-button'>Apply Now</button>
-        </form>
+        <h3 class='job-title'>
+             " . htmlspecialchars($job['title']) . "
+        </h3>
+
+        <p><i class='fas fa-building'></i> <strong>Company:</strong> " . htmlspecialchars($job['companyName']) . "</p>
+        <p><i class='fas fa-map-marker-alt'></i> <strong>Location:</strong> " . htmlspecialchars($job['location']) . "</p>
+        <p><i class='fas fa-dollar-sign'></i> <strong>Salary:</strong> " . htmlspecialchars($job['salaryRange']) . "</p>
+
+        <div class='tags'>
+            <span class='tag job-type'><i class='fas fa-clock'></i> " . htmlspecialchars($job['type']) . "</span>
+            <span class='tag duration'><i class='fas fa-calendar-alt'></i> " . htmlspecialchars($job['duration']) . "</span>
+        </div>
+
+        <div class='button-group'>
+            <button class='view-details' onclick='openModal(" . intval($job['id']) . ")'>View Details</button>
+
+            <form action='../Pages/JobApplication.php?jobId={$job['id']}' method='post' style='display:inline;'>
+                <input type='hidden' name='jobId' value='{$job['id']}'>
+                <button type='submit' class='apply-button'>Apply Now</button>
+            </form>
+        </div>
     </div>";
 }
+
 
 function getCategories($conn){
     $sql = "SELECT categories.id, categories.title, COUNT(jobs.id) as job_count

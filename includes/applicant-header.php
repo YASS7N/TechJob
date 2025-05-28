@@ -29,7 +29,7 @@
             <?php if (isset($_SESSION['userId'])): ?>
                 <a href="../controllers/logout.php" class="btn-logout">Déconnexion</a>
             <?php else: ?>
-                <a href="./RolePage.php" class="btn-login">Connexion</a>
+                <a href="./LoginPage.php" class="btn-login">Connexion</a>
             <?php endif; ?>
         </div>
         <?php if (isset($_SESSION['userId'])): ?>

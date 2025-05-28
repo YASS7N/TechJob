@@ -6,7 +6,7 @@ $categoryId = isset($_GET['category']) ? intval($_GET['category']) : $default;
 
 if ($categoryId == $default) {
     $jobs = fetchAllJobs();
-    $categoryName = 'Trouvez votre emploi de rêves. Postulez maintenant !';
+    $categoryName = '';
 } else {
     $categoryName = "Jobs in " . fetchCategoryName($categoryId);
     $jobs = fetchJobsByCategory($categoryId);
@@ -19,11 +19,12 @@ if ($categoryId == $default) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TechJob - Offres d'Emploi<?= htmlspecialchars($categoryName) ?></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="stylesheet" href="../styles/generalStyles.css">
         <link rel="stylesheet" href="../styles/HomePage/header.css">
         <link rel="stylesheet" href="../styles/HomePage/footer.css">
         <link rel="stylesheet" href="../styles/HomePage/common-styles.css">
-        <link rel="stylesheet" href="../css/jobs.css">
+        <link rel="stylesheet" href="../css/jobslisting.css">
     </head>
     <body>
 
@@ -31,6 +32,12 @@ if ($categoryId == $default) {
         $currentPage = "JobsListing";
         include_once '../includes/applicant-header.php'; 
     ?>
+
+    <div class="hero-text-wrapper">
+    <h1 class="hero-title">Trouvez votre emploi de rêves</h1>
+    <p class="hero-subtitle">Postulez maintenant !</p>
+    <div class="hero-underline"></div>
+    </div>
 
     <div class="container">
         <h1 class="page-title"><?= htmlspecialchars($categoryName) ?></h1>

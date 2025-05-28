@@ -1,0 +1,7 @@
+{
+    "name": "yassin/tech-job",
+    "description": "A job platform for employers and job seekers",
+    "require": {
+        "phpmailer/phpmailer": "^6.10"
+    }
+}

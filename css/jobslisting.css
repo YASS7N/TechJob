@@ -1,0 +1,250 @@
+:root {
+    --onsite: #4c6ef5;
+    --remote: #2ecc71;
+    --hybrid: #a29bfe;
+    --contract: #fd9644;
+    --fulltime: #2ed573;
+
+    --primary: #1e90ff;
+    --success: #2ecc71;
+    --light-bg: #f9f9f9;
+    --light-text: #333;
+    --muted: #888;
+    --border: #e0e0e0;
+
+    --font: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: #f2f6ff;
+    font-family: var(--font);
+    color: var(--light-text);
+    margin-top: 100px;
+}
+
+.page-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #1e90ff;
+}
+
+.hero-text-wrapper {
+    text-align: center;
+    margin-top: 100px; 
+    margin-bottom: 20px;
+}
+
+
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #1e90ff;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.hero-underline {
+    width: 100px;
+    height: 4px;
+    background-color: #1e90ff;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+
+.job-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); /* wider cards */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.job-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 40px 30px; /* more padding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 30px; /* more height */
+}
+
+.job-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.job-item:hover .job-title {
+    color: #007bff; 
+}
+
+
+.job-item h3 {
+    color: #222;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.job-item p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.job-item p i {
+    color: #aaa; 
+}
+
+.label {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin: 4px 6px 4px 0;
+    color: white;
+}
+
+.label.onsite { background-color: var(--onsite); }
+.label.remote { background-color: var(--remote); }
+.label.hybrid { background-color: var(--hybrid); }
+.label.contract { background-color: var(--contract); }
+.label.fulltime { background-color: var(--fulltime); }
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    margin: 4px 6px 4px 0;
+}
+
+.job-type {
+    background-color: rgba(76, 110, 245, 0.15);
+    color: #1e4ed8;
+}
+
+.duration {
+    background-color: rgba(46, 213, 115, 0.2); 
+    color: #218c74;
+}
+
+.tag i {
+    font-size: 0.9rem;
+}
+
+.skills-container {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.skill-badge {
+    background: #f1f3f5;
+    color: #333;
+    font-weight: 500;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    text-transform: capitalize;
+}
+
+.view-details,
+.apply-button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-details {
+    background-color: var(--primary);
+    color: white;
+    margin-right: 10px;
+    box-shadow: none;
+}
+
+.view-details:hover {
+    background-color: #187bcd;
+}
+
+.apply-button {
+    background-color: var(--success);
+    color: white;
+    box-shadow: none; 
+}
+
+.apply-button:hover {
+    background-color: #28b463;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    padding: 40px 20px;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: #fff;
+    color: #333;
+    padding: 30px;
+    max-width: 720px;
+    margin: auto;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.2rem;
+    }
+
+    .job-item {
+        padding: 20px;
+    }
+
+    .view-details,
+    .apply-button {
+        font-size: 0.85rem;
+        padding: 10px 14px;
+    }
+}

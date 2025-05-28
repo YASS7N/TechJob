@@ -21,11 +21,11 @@
     <div class="choose-role-container">
         <h1 class="choose-role-title">CHOISISSEZ<br>VOTRE RÔLE</h1>
         <div class="role-buttons">
-            <a href="./LoginPage.php?role=applicant" class="role-button applicant">
+            <a href="./RegisterPage.php?role=applicant" class="role-button applicant">
                 <i class="fas fa-user-graduate"></i>
                 Chercheur d'emploi
             </a>
-            <a href="./LoginPage.php?role=employer" class="role-button employer">
+            <a href="./RegisterPageEmployer.php?role=employer" class="role-button employer">
                 <i class="fas fa-briefcase"></i>
                 Employeur
             </a>
