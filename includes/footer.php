@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 .footer {
-background-color: #343a40;
+background-color:rgb(37, 37, 37);
 color: white;
 padding: 50px 0;
 }
@@ -39,13 +39,13 @@ color: #007bff;
         <li><a href="HomePage.php">Accueil</a></li>
         <li><a href="JobsListing.php">Offres d'emploi</a></li>
         <li><a href="AboutUsPage.php">À propos</a></li>
-        <li><a href="AboutUsPage.php#contact">Contact</a></li>
+        <li><a href="ContactPage.php#contact">Contact</a></li>
+        <li><a href="FaqPage.php#contact">FAQ</a></li>
         </ul>
 </div>
 <div class="col-md-3">
         <h5>Contactez-nous</h5>
         <ul class="list-unstyled">
-        <li><i class="fas fa-map-marker-alt"></i> Meknès, Maroc</li>
         <li><i class="fas fa-phone"></i> +212 600 000 000</li>
         <li><i class="fas fa-envelope"></i> Techjob.maroc@gmail.com</li>
         </ul>
@@ -62,7 +62,6 @@ color: #007bff;
 <hr>
 <div class="text-center">
 <p>&copy; 2025 TechJob. Tous droits réservés.</p>
-<p class="credits"><i class="fa-solid fa-people-group"></i> Développé par <span style="color:#3f72af;">Yassin</span>, <span style="color: #3f72af;">Othmane</span>, <span style="color: #3f72af;">Brahim</span></p>
 </div>
 </div>
 </footer>

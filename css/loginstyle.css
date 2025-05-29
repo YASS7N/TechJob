@@ -97,7 +97,7 @@
   }
   
   .btn-login {
-    background: linear-gradient(to right, #9b87f5, #7e69ab);
+    background: linear-gradient(135deg, #00f2ff, #3a6eff);
     border: none;
     padding: 0.8rem;
     color: white;
@@ -109,7 +109,7 @@
   }
   
   .btn-login:hover {
-    background: linear-gradient(to right, #7f6adf, #6c579c);
+    background: linear-gradient(135deg, #01e2ee, #2954c9);
   }
   
   .bottom-line {
@@ -120,7 +120,7 @@
   }
   
   .login-form-bottom-link {
-    color: #7e69ab;
+    color: linear-gradient(135deg, #00f2ff, #3a6eff);
     font-weight: 500;
     text-decoration: none;
     margin-left: 0.4rem;
@@ -135,7 +135,7 @@
     top: 1rem;
     right: 1rem;
     background: white;
-    color: #7e69ab;
+    color: #3a6eff;
     border: none;
     border-radius: 9999px;
     padding: 0.5rem 1rem;
@@ -177,10 +177,6 @@
     z-index: 1;
   }
   
-    
-    
-  
-  
 .options-line {
   display: flex;
   justify-content: space-between;
@@ -211,7 +207,7 @@
   text-decoration: none;
 }
 .forgot-link {
-    color: #7e69ab;
+    color: linear-gradient(135deg, #00f2ff, #3a6eff);
     text-decoration: none;
 }
 
@@ -223,7 +219,7 @@
     top: 20px;
     left: 20px;
     padding: 10px 20px;
-    background-color: #7e69ab;
+    background: linear-gradient(135deg, #00f2ff, #3a6eff);
     color: white;
     border: none;
     border-radius: 5px;
@@ -239,7 +235,6 @@
 }
 
 .back-button:hover {
-    background-color: #6c579c;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }

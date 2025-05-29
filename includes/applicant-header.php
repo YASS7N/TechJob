@@ -24,7 +24,7 @@
             <?php if ($currentPage !== 'About'): ?>
                 <a href="./AboutUsPage.php">À propos</a>
             <?php endif; ?>
-            <a href="./AboutUsPage.php#contact">Contact</a>
+            <a href="./ContactPage.php#contact">Contact</a>
 
             <?php if (isset($_SESSION['userId'])): ?>
                 <a href="../controllers/logout.php" class="btn-logout">Déconnexion</a>

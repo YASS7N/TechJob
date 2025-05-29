@@ -1,0 +1,201 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+.bg-purple {
+  background-color: #6f42c1 !important; 
+}
+.link-group,
+.contact-info-item {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    padding: 20px 24px;
+    min-width: 280px;
+    flex: 1 1 280px;
+}
+
+
+/* Colored top borders for sections */
+.link-group h4::before,
+.contact-info-item h4::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.link-group:nth-of-type(1) h4::before {
+    background-color: #3b82f6; /* blue */
+}
+.link-group:nth-of-type(2) h4::before {
+    background-color: #10b981; /* green */
+}
+.contact-info-item:nth-of-type(1) h4::before {
+    background-color: #6366f1; /* indigo */
+}
+.contact-info-item:nth-of-type(2) h4::before {
+    background-color: #6366f1; /* indigo */
+}
+.contact-info-item:nth-of-type(3) h4::before {
+    background-color: #ec4899; /* pink */
+}
+
+/* Titles */
+.link-group h4,
+.contact-info-item h4 {
+    font-size: 18px;
+    color: #1f2937;
+    margin-bottom: 12px;
+}
+
+/* Links List */
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link-list li {
+    padding: 10px 0;
+    font-size: 14px;
+    color: #374151;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.link-list li:last-child {
+    border-bottom: none;
+}
+
+/* Social Icons */
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 20px;
+    color: #374151;
+}
+
+.social-links a:hover {
+    color: #3b82f6;
+}
+
+/* Team section placeholder styling (optional) */
+.contact-info-item:nth-child(1) p {
+    margin: 6px 0;
+    font-weight: 500;
+    color: #4b5563;
+}
+.team-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.team-card .top-section {
+    position: relative;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: none;
+}
+
+.team-card .bottom-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.circle-initials {
+    background: white;
+    color: #1e3a8a;
+    font-weight: bold;
+    font-size: 1.5rem;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-dot {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 10px;
+    height: 10px;
+    background: #10b981;
+    border-radius: 50%;
+}
+
+/* Card Color Themes */
+.team-card.blue .top-section {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.team-card.green .top-section {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.team-card.purple .top-section {
+    background: linear-gradient(135deg, #d81e1e, #b80b0b);
+}
+
+.text-purple {
+    color: #8b5cf6;
+}
+.text-red {
+  color: #d81e1e !important;
+}
+
+.bg-teal {
+  background-color: #00758f !important;
+}
+
+.tags {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+}
+
+.bg-pink {
+    background-color: #ec4899 !important;
+}
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+

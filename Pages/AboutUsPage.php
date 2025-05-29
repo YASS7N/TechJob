@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../styles/HomePage/contact-section.css">
     <link rel="stylesheet" href="../styles/HomePage/footer.css">
     <link rel="stylesheet" href="../styles/HomePage/common-styles.css">
+    <link rel="stylesheet" href="../css/about.css">
 </head>
 <body class="bg-light">
     <?php 
@@ -56,83 +57,91 @@
             </p>
         </div>
     </section>
+<section class="team-section text-center my-5">
+  <h2 class="fw-bold">Notre Équipe</h2>
+  <p class="text-muted">Rencontrez les talents qui donnent vie à nos projets</p>
 
-    <style>
-    .contact-links {
-        color: #333; 
-    }
-
-    .link-group h4 {
-        color: #444;
-    }
-
-    .link-list li {
-        color: #555; 
-        padding: 3px 0;
-    }
-
-    .link-list li:hover {
-        color: #007bff; 
-        cursor: pointer;
-    }
-    </style>
-
-    <section class="contact-container-full" id="contact">
-        <div class="contact-container">
-            <div class="contact-header">
-                <h2>Contactez-Nous</h2>
-                <p>Contactez-nous pour toute demande ou assistance</p>
+  <div class="container mt-5">
+    <div class="row g-4 justify-content-center">
+      <!-- Yassin -->
+      <div class="col-md-4">
+        <div class="team-card blue">
+          <div class="top-section">
+            <div class="profile-image">
+              <img src="../assets/images/yassinn.png" alt="Photo de Yassin">
             </div>
-            
-            <div class="contact-content">
-                <div class="contact-links">                
-                    <div class="link-group">
-                        <h4>Pour les Chercheurs d'Emploi</h4>
-                        <ul class="link-list">
-                            <li>Rechercher des Offres</li>
-                            <li>Téléverser le CV</li>
-                            <li>Emplois d'entreprise</li>
-                        </ul>
-                    </div>
-
-                    <div class="link-group">
-                        <h4>Pour les Employeurs</h4>
-                        <ul class="link-list">
-                            <li>Publier une Offre</li>
-                            <li>Rechercher des Entreprises</li>
-                            <li>Filtrer les Candidats</li>
-                            <li>Voir les Offres Publiées</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="contact-info">                
-                    <div class="contact-info-item">
-                        <h4>Notre Équipe</h4>
-                        <p>Yassin Fikri</p>
-                        <p>Othmane Bouziane</p>
-                        <p>Ibrahim Ouazzani</p>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <h4>Coordonnées</h4>
-                        <p>Téléphone : +212 600 000 000</p>
-                        <p>Email : Techjob.ma@gmail.com</p>
-                        <p>Horaires : Disponible 24h/24, 7j/7</p>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <h4>Suivez-Nous</h4>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
+            <span class="status-dot"></span>
+          </div>
+          <div class="bottom-section">
+            <h5 class="fw-bold mb-1">Yassin Fikri</h5>
+            <p class="role text-primary fw-semibold">Développeur Full Stack & Designer UX/UI</p>
+            <p class="description">
+              Expert en développement full-stack avec une forte sensibilité UI/UX. Maîtrise PHP, JavaScript et MySQL pour créer des interfaces élégantes et fonctionnelles.
+            </p>
+            <div class="tags">
+              <span class="tag bg-teal text-white">MYSQL</span>
+              <span class="tag bg-purple text-white">PHP</span>
+              <span class="tag bg-warning text-black">Javascript</span>
+              <span class="tag bg-primary text-white">UI/UX</span>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <!-- Ibrahim -->
+      <div class="col-md-4">
+        <div class="team-card green">
+          <div class="top-section">
+            <div class="profile-image">
+              <img src="../assets/images/brahiim.png" alt="Photo de Ibrahim">
+            </div>
+            <span class="status-dot"></span>
+          </div>
+          <div class="bottom-section">
+            <h5 class="fw-bold mb-1">Ibrahim Ouazzani</h5>
+            <p class="role text-success fw-semibold">Développeur Full Stack</p>
+            <p class="description">
+              Développeur full-stack spécialisé dans le développement d'applications web dynamiques avec PHP, JavaScript et MySQL.
+            </p>
+            <div class="tags">
+              <span class="tag bg-teal text-white">MYSQL</span>
+              <span class="tag bg-purple text-white">PHP</span>
+              <span class="tag bg-warning text-black">Javascript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Othmane -->
+      <div class="col-md-4">
+        <div class="team-card purple">
+          <div class="top-section">
+            <div class="profile-image">
+              <img src="../assets/images/othmane.png" alt="Photo de Othmane">
+            </div>
+            <span class="status-dot"></span>
+          </div>
+          <div class="bottom-section">
+            <h5 class="fw-bold mb-1">Othmane Bouziane</h5>
+            <p class="role text-red fw-semibold">Développeur Full Stack</p>
+            <p class="description">
+              Développeur full-stack compétent en PHP, JavaScript et MySQL, avec une solide expérience dans la création d'architectures web performantes.
+            </p>
+            <div class="tags">
+              <span class="tag bg-teal text-white">MYSQL</span>
+              <span class="tag bg-purple text-white">PHP</span>
+              <span class="tag bg-warning text-black">Javascript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 
     <?php include_once('../includes/footer.php') ?>
 </body>

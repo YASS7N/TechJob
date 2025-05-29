@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = connectDB();
 
     if (empty($_POST['username']) || empty($_POST['password'])) {
-        $_SESSION['login_error'] = "Username and password are required.";
+        $_SESSION['login_error'] = "Nom d'utilisateur et mot de passe requis.";
         header("Location: ../Pages/LoginPage.php");
         exit();
     }
@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../Pages/$redirectPage");
             exit();
         } else {
-            $_SESSION['login_error'] = "Invalid username or password.";
+            $_SESSION['login_error'] = "Nom d'utilisateur ou mot de passe invalide.";
         }
     } else {
-        $_SESSION['login_error'] = "Invalid username or password.";
+        $_SESSION['login_error'] = "Nom d'utilisateur ou mot de passe invalide.";
     }
 
     $stmt->close();
