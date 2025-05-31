@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="../css/styles.css">
-    
-
+    <link rel="stylesheet" href="../css/navbar.css">
 </head>
 <body>
+    <style>
+.ham-burger i {
+  font-size: 40px !important;
+  color: black !important;
+}
+        </style>
 <header id="header">
     <nav class="home-page-nav">
         <a href="HomePage.php" class="logo">
@@ -38,32 +44,20 @@
             <?php endif; ?>
 
 
-        <div class="ham-burger">
-            <a href="#header" class="menu-link">
-                <img src="../assets/icons/ham-burger.png" alt="icône-menu">
-            </a>
-        </div>
+      <div class="ham-burger menu-link">
+<i class="fas fa-bars"></i>
+</div>
+
     </nav>
 </header>
-<style>
-    .account-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
-    font-size: 1rem;
-    color: #111;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuLink = document.querySelector('.ham-burger');
+  const navLinks = document.querySelector('.nav-links');
 
-.account-link i {
-    font-size: 1.2rem;
-    color: #00f2ff;
-}
+  menuLink.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+});
 
-.account-link:hover {
-    color: #00f2ff;
-}
-
-</style>
+</script>

@@ -1,0 +1,90 @@
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .home-page-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      position: relative;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+    }
+
+    .btn-login,
+    .btn-logout {
+      padding: 6px 12px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .account-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .account-link i {
+      font-size: 1.2rem;
+      color: #00f2ff;
+    }
+
+    .account-link:hover {
+      color: #00f2ff;
+    }
+
+    .ham-burger {
+      display: none;
+      cursor: pointer;
+      font-size: 50px;
+    }
+
+    .ham-burger img {
+      width: 30px;
+      height: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: #fff;
+        width: 100%;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .ham-burger {
+        display: block;
+      }
+    }
