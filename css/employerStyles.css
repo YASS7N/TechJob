@@ -1,0 +1,68 @@
+/* Sidebar container */
+.card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+/* Sidebar button styles */
+.nav-pills .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: #555;
+    background-color: transparent;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Font Awesome icons */
+.nav-pills .nav-link i {
+    font-size: 16px;
+    transition: color 0.2s ease-in-out;
+    color: #888;
+}
+
+/* Active tab */
+.nav-pills .nav-link.active {
+    background: linear-gradient(to right, #2680eb, #4d9df5);
+    color: #fff;
+    font-weight: 600;
+}
+
+.nav-pills .nav-link.active i {
+    color: #fff;
+}
+
+/* Hover state */
+.nav-pills .nav-link:hover {
+    transform: scale(1.03);
+    background-color: #f0f0f0;
+    color: #2680eb;
+}
+
+.nav-pills .nav-link:hover i {
+    color: #2680eb;
+}
+.job-post-banner {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.job-post-banner h1 {
+  color: #007BFF; 
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.job-post-banner p {
+  color: #555;
+  font-size: 16px;
+}
+

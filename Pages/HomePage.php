@@ -37,8 +37,8 @@ if (isset($_SESSION['login_success'])) {
     <title>Tech Job - Trouvez Votre Emploi IT de Rêve</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
 <body>
+    
     <?php include_once('../includes/homepage-header.php') ?>
 
     <section class="categories">
@@ -140,7 +140,22 @@ if (isset($_SESSION['login_success'])) {
                 showConfirmButton: false,
                 timer: 2000
             });
+
+            
         </script>
     <?php endif; ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuLink = document.querySelector('.ham-burger');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuLink.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+});
+
+</script>
+
 </body>
 </html>

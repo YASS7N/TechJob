@@ -1,0 +1,118 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fc;
+}
+
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+label.form-label {
+    font-weight: 600;
+    color: #4b4f56;
+    margin-bottom: 8px;
+}
+
+input.form-control,
+select.form-select,
+textarea.form-control {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+input.form-control:focus,
+select.form-select:focus,
+textarea.form-control:focus {
+    border-color: #6f42c1;
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+    outline: none;
+}
+
+.input-group-text {
+    background-color: #f1f3f5;
+    border: 1px solid #dee2e6;
+    border-radius: 0 10px 10px 0;
+    padding: 0 12px;
+}
+
+.custom-post-btn {
+    width: 100%;
+    padding: 10px 0;
+    background: linear-gradient(to right, #00f2ff, #3a6eff);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    transition: all 0.25s ease-out;
+    box-shadow: 0 4px 12px rgba(0, 242, 255, 0.2);
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.custom-post-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    transition: all 0.25s ease-out;
+    z-index: 0;
+    opacity: 0;
+}
+
+.custom-post-btn:hover::before {
+    left: 0;
+    opacity: 1;
+}
+
+.custom-post-btn:hover {
+    transform: scale(1.03);
+}
+
+.custom-post-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+
+.col-md-6.mb-3 label::before,
+.col-6.mb-3 label::before,
+.col-12.mb-3 label::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 8px;
+}
+
+/* Extra */
+::placeholder {
+    color: #adb5bd;
+    font-size: 13px;
+}
+
+@media (max-width: 768px) {
+    .form-label {
+        font-size: 14px;
+    }
+    input.form-control,
+    select.form-select,
+    textarea.form-control {
+        font-size: 13px;
+        padding: 10px;
+    }
+    .btn-primary {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

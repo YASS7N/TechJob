@@ -78,6 +78,55 @@ include '../includes/applicant-header.php';
         font-size: 1rem;
     }
 }
+@media (max-width: 768px) {
+    .slide-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+        padding: 0 5%;
+        height: 100%;
+    }
+
+    .text-content {
+        position: absolute;
+        top: 20%;
+        z-index: 3;
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .text-content h1 {
+        font-size: 2.4rem;
+        line-height: 1.3;
+    }
+
+    .text-content h6 {
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        color: #ccc;
+    }
+
+    .btn-see-jobs {
+        margin-top: 1.5rem;
+    }
+
+   .foreground {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw; /* Full screen width */
+    max-width: none; /* Remove limits */
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+}
+
+}
+
 
 </style>
 

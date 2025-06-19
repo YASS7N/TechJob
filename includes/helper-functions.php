@@ -59,9 +59,9 @@ function generateJobMarkup($job) {
              " . htmlspecialchars($job['title']) . "
         </h3>
 
-        <p><i class='fas fa-building'></i> <strong>Company:</strong> " . htmlspecialchars($job['companyName']) . "</p>
-        <p><i class='fas fa-map-marker-alt'></i> <strong>Location:</strong> " . htmlspecialchars($job['location']) . "</p>
-        <p><i class='fas fa-dollar-sign'></i> <strong>Salary:</strong> " . htmlspecialchars($job['salaryRange']) . "</p>
+        <p><i class='fas fa-building'></i> <strong>Entreprise :</strong> " . htmlspecialchars($job['companyName']) . "</p>
+        <p><i class='fas fa-map-marker-alt'></i> <strong>Lieu :</strong> " . htmlspecialchars($job['location']) . "</p>
+        <p><i class='fas fa-dollar-sign'></i> <strong>Salaire :</strong> " . htmlspecialchars($job['salaryRange']) . "</p>
 
         <div class='tags'>
             <span class='tag job-type'><i class='fas fa-clock'></i> " . htmlspecialchars($job['type']) . "</span>
@@ -69,11 +69,11 @@ function generateJobMarkup($job) {
         </div>
 
         <div class='button-group'>
-            <button class='view-details' onclick='openModal(" . intval($job['id']) . ")'>View Details</button>
+            <button class='view-details' onclick='openModal(" . intval($job['id']) . ")'>Voir les détails</button>
 
             <form action='../Pages/JobApplication.php?jobId={$job['id']}' method='post' style='display:inline;'>
                 <input type='hidden' name='jobId' value='{$job['id']}'>
-                <button type='submit' class='apply-button'>Apply Now</button>
+                <button type='submit' class='apply-button'>Postuler maintenant</button>
             </form>
         </div>
     </div>";
@@ -99,7 +99,7 @@ function getCategories($conn){
         }
         return $categories;
     } else {
-        echo "No categories found.";
+        echo "Aucune catégorie trouvée.";
         return [];
     }
 }
@@ -120,14 +120,14 @@ function getFeaturedJobs($conn) {
         }
         return $featuredJobs;
     } else {
-        echo "No featured jobs found.";
+        echo "Aucun emploi en vedette trouvé.";
         return [];
     }
 }
 
 function getRandomTestimonials($conn, $number) {
     $testimonials = array();
-        $sql = "SELECT t.id, t.review, t.name, t.occupation, t.image 
+    $sql = "SELECT t.id, t.review, t.name, t.occupation, t.image 
             FROM testimonials t 
             ORDER BY RAND() 
             LIMIT $number";
@@ -147,7 +147,7 @@ function getRandomTestimonials($conn, $number) {
             }
         }
     } catch (Exception $e) {
-        error_log("Error fetching testimonials: " . $e->getMessage());
+        error_log("Erreur lors de la récupération des témoignages : " . $e->getMessage());
         return [];
     }
     
@@ -181,10 +181,20 @@ function fetchApplicantsByUser($userId) {
     $conn = connectDB();
     $query = "SELECT 
                   a.id AS applicantId, 
-                  a.cv, 
+                  a.cv_filename, 
                   a.experience, 
-                  a.coverLetter, 
+                  a.coverLetter,
+                  a.telephone,
+                  a.adresse,
+                  a.github,
+                  a.diplome,
+                  a.etablissement,
+                  a.annee,
+                  a.competences,
+                  a.langues,
+                  a.date_entree,
                   u.fullName, 
+                  u.email,
                   j.title AS jobTitle
               FROM 
                   applicants a
@@ -208,5 +218,6 @@ function fetchApplicantsByUser($userId) {
     $stmt->close();
     return $applicants;
 }
+
 
 ?>
