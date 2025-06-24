@@ -29,12 +29,24 @@ CREATE TABLE IF NOT EXISTS `applicants` (
   `experience` int(11) NOT NULL DEFAULT 0,
   `joiningDate` date DEFAULT NULL,
   `coverLetter` text DEFAULT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `telephone` varchar(20) DEFAULT NULL,
+  `adresse` varchar(255) DEFAULT NULL,
+  `github` varchar(255) DEFAULT NULL,
+  `diplome` varchar(100) DEFAULT NULL,
+  `etablissement` varchar(150) DEFAULT NULL,
+  `annee` varchar(20) DEFAULT NULL,
+  `competences` text DEFAULT NULL,
+  `langues` text DEFAULT NULL,
+  `date_entree` date DEFAULT NULL,
+  `cv_filename` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   KEY `jobId` (`jobId`),
   CONSTRAINT `applicants_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE,
   CONSTRAINT `applicants_ibfk_2` FOREIGN KEY (`jobId`) REFERENCES `jobs` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table job.applicants: ~0 rows (approximately)
 
@@ -94,9 +106,12 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   KEY `category` (`category`),
   CONSTRAINT `jobs_ibfk_1` FOREIGN KEY (`postedBy`) REFERENCES `users` (`userId`) ON DELETE CASCADE,
   CONSTRAINT `jobs_ibfk_2` FOREIGN KEY (`category`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table job.jobs: ~1 rows (approximately)
+INSERT INTO `jobs` (`id`, `postedBy`, `category`, `title`, `companyName`, `location`, `salaryRange`, `duration`, `type`, `datePosted`, `skills`, `status`, `numberOfApplicants`, `description`, `requirements`, `specializations`, `experience`) VALUES
+	(33, 'aa-685aae752ec82', 9, 'Designer Graphique', 'Ecole', 'Tout le maroc', 'MAD 7000-10000', 'full-time', 'remote', '2025-06-24 14:59:00', 'Adobe Photoshop, Illustrator, InDesign, Canva', 'active', 0, 'Nous recherchons un Graphiste talentueux et créatif pour rejoindre notre équipe. Vous serez responsable de la conception visuelle et de la création de supports graphiques variés (print, web, réseaux sociaux, branding, etc.) afin de valoriser l’image de notre entreprise et de nos clients.', 'Diplôme en design graphique, arts visuels ou équivalent\r\n\r\nMaîtrise des logiciels de création graphique : Adobe Photoshop, Illustrator, InDesign, etc.\r\n\r\nExcellente sensibilité artistique et sens du détail\r\n\r\nCapacité à travailler en équipe et à respecter les délais', '41', 'expert-level'),
+	(34, 'je-6828a8ed3f379', 1, 'Developpeur Front End', 'YSNet', 'Meknes, Maroc', 'MAD 6000-10000', 'full-time', 'onsite', '2025-06-24 15:03:19', 'HTML, CSS , Bootstrap , JavaScript , React.js , Vue.js', 'active', 0, 'Nous recherchons un développeur front-end intermédiaire passionné et rigoureux pour rejoindre notre équipe. Vous participerez au développement et à la maintenance des interfaces web en assurant une expérience utilisateur fluide et performante. Vous travaillerez en étroite collaboration avec les designers UX/UI et les développeurs back-end pour implémenter des solutions modernes et efficaces.', 'Expérience confirmée (2 à 5 ans) en développement front-end\r\n\r\nMaîtrise de HTML5, CSS3, JavaScript (ES6+) et d’au moins un framework moderne (React, Vue ou Angular)\r\n\r\nBonne connaissance des principes de responsive design et d’accessibilité web\r\n\r\nMaîtrise des outils de gestion de versions (Git)', '1', 'mid-level');
 
 -- Dumping structure for table job.secteurs_activite
 CREATE TABLE IF NOT EXISTS `secteurs_activite` (
@@ -106,16 +121,28 @@ CREATE TABLE IF NOT EXISTS `secteurs_activite` (
   UNIQUE KEY `nom_secteur` (`nom_secteur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.secteurs_activite: ~8 rows (approximately)
+-- Dumping data for table job.secteurs_activite: ~20 rows (approximately)
 INSERT INTO `secteurs_activite` (`id`, `nom_secteur`) VALUES
 	(5, 'Analyse de Données'),
+	(13, 'Big Data'),
+	(14, 'Blockchain'),
+	(20, 'Consulting IT'),
 	(3, 'Cybersécurité'),
+	(9, 'Design Graphique'),
+	(16, 'Développement Jeux Vidéo'),
 	(2, 'Développement Mobile'),
 	(1, 'Développement Web'),
+	(18, 'E-commerce'),
+	(12, 'Gestion de Projet'),
 	(7, 'Infogérance / Cloud'),
 	(4, 'Intelligence Artificielle'),
+	(15, 'Internet des Objets (IoT)'),
+	(11, 'Marketing Digital'),
+	(19, 'Réalité Virtuelle / Augmentée'),
 	(6, 'Réseaux et Systèmes'),
-	(8, 'Support Technique');
+	(8, 'Support Technique'),
+	(17, 'Test et Qualité Logicielle'),
+	(10, 'UX/UI Design');
 
 -- Dumping structure for table job.specializations
 CREATE TABLE IF NOT EXISTS `specializations` (
@@ -186,29 +213,14 @@ CREATE TABLE IF NOT EXISTS `tailles_entreprise` (
   `taille` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `taille` (`taille`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table job.tailles_entreprise: ~4 rows (approximately)
 INSERT INTO `tailles_entreprise` (`id`, `taille`) VALUES
 	(1, '1-10 employés'),
+	(3, '100+ employés'),
 	(2, '11-50 employés'),
-	(4, '200+ employés'),
-	(3, '51-200 employés');
-
--- Dumping structure for table job.testimonials
-CREATE TABLE IF NOT EXISTS `testimonials` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` varchar(255) DEFAULT NULL,
-  `review` text NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `occupation` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `userId` (`userId`),
-  CONSTRAINT `testimonials_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Dumping data for table job.testimonials: ~0 rows (approximately)
+	(4, '51-200 employés');
 
 -- Dumping structure for table job.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -224,10 +236,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.users: ~2 rows (approximately)
+-- Dumping data for table job.users: ~6 rows (approximately)
 INSERT INTO `users` (`userId`, `fullname`, `username`, `email`, `phone`, `password`, `role`, `profile_picture`, `description`) VALUES
-	('je-6828a8ed3f379', 'Job Employer', 'JobEmployer', 'yassin.fikri00@gmail.com', '0762695921', '$2y$10$scepp4g/KwVUEn8S.QX2ZOn9jB8QTzzO0FdYDY6n0sa4HeZfz1r4e', 'employer', NULL, NULL),
-	('yf-68289a9d0f474', 'Yassin Fikri', 'YASS7N', 'yassin.fikri00@gmail.com', '0762695921', '$2y$10$yjILOU8u6raKEo0QOs8FH.mTWClL5vzaqJidrKpVLPvUrZ.wn57RG', 'applicant', NULL, NULL);
+	('aa-685aae752ec82', 'Ahmed Alaoui', 'Ahmed', 'ahmed@gmail.com', '0661628964', '$2y$10$d89/fuORTiYQS7wGOe1xxOA2XAdrvu7N4BsEzq1P0Woxu/Jg74.HW', 'employer', NULL, NULL),
+	('ar-68374523ecf7d', 'Ahmed Regragui', 'AhmedRegragui', 'ahmedregragui@gmail.com', '065498752', '$2y$10$ctZJinYSd5YWNLuGvuE3juN5y8WS01i9si5NIA8m5fk3Q34FUtaFW', 'employer', NULL, NULL),
+	('je-6828a8ed3f379', 'Yahou', 'JobEmployer', 'yassinfikryy@gmail.com', '0762695921', '$2y$10$scepp4g/KwVUEn8S.QX2ZOn9jB8QTzzO0FdYDY6n0sa4HeZfz1r4e', 'employer', NULL, ''),
+	('jk-68374716d9a61', 'Jawad Kadi', 'Jawad_Kadi', 'jawadkadi@gmail.com', '0776564121', '$2y$10$sFz2JsvMpApxkzkT8jrBoON5eYJk0sFvWFtiqpKZd.tsYGPdU17u.', 'employer', NULL, NULL),
+	('ut-6855e85f9c582', 'User Test', 'UserTest', 'yassin.fikri00@gmail.com', '0762695921', '$2y$10$gO06rYtSZ38j3P.7iH8U5e9lkE88GRRvq5.4FxJYpmZ9f2Ff8LduK', 'applicant', NULL, NULL),
+	('wa-68374656bb66a', 'Walid Alaoui', 'Walid', 'walid@gmail.com', '0761627055', '$2y$10$fro/.5DIcSQxnHJdakhCeek/9iAJnt6QNBnie/BvjxcyMaTUw2Ami', 'employer', NULL, NULL),
+	('yf-68389cf693b45', 'Yassin Fikri', 'Yassin', 'yassin.fikri00@gmail.com', '0762695921', '$2y$10$hWnE96XGJS/M2PGf7QNEFOaPyoBd3pZSEIGEG5W/G0twfED22o9a.', 'applicant', NULL, NULL);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
