@@ -12,30 +12,48 @@ $sql = "SELECT * FROM jobs WHERE id = $jobId";
 $result = mysqli_query($conn, $sql);
 
 if (!$result || mysqli_num_rows($result) === 0) {
-    echo "Offre d'emploi introuvable !";
+    echo "<p>Offre d'emploi introuvable !</p>";
     exit;
 }
 
-if ($result && $job = mysqli_fetch_assoc($result)) {
-    $skills = explode(',', $job['skills']);
+$job = mysqli_fetch_assoc($result);
+$skills = explode(',', $job['skills']);
 ?>
-    <h2><?= htmlspecialchars($job['title']) ?></h2>
-    <p><strong>Entreprise :</strong> <?= htmlspecialchars($job['companyName']) ?></p>
-    <p><strong>Lieu :</strong> <?= htmlspecialchars($job['location']) ?></p>
-    <p><strong>Salaire :</strong> <?= htmlspecialchars($job['salaryRange']) ?></p>
-    <p><strong>Type :</strong> <?= htmlspecialchars($job['type']) ?></p>
-    <p><strong>Durée :</strong> <?= htmlspecialchars($job['duration']) ?></p>
-    <p><strong>Expérience requise :</strong> <?= htmlspecialchars($job['experience']) ?></p>
-    <p><strong>Description :</strong> <?= nl2br(htmlspecialchars($job['description'])) ?></p>
-    <p><strong>Exigences :</strong> <?= nl2br(htmlspecialchars($job['requirements'])) ?></p>
-    <p><strong>Compétences :</strong></p>
-    <div class="skills-container">
-        <?php foreach ($skills as $skill): ?>
-            <span class="skill-badge"><?= htmlspecialchars(trim($skill)) ?></span>
-        <?php endforeach; ?>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="../css/modal-job.css">
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2><?= htmlspecialchars($job['title']) ?></h2>
+        <span class="close" onclick="closeModal()">&times;</span>
     </div>
-<?php
-} else {
-    echo "<p>Offre d'emploi introuvable !</p>";
-}
-?>
+
+    <!-- Stylized Company Name -->
+    <p class="company-name"><?= htmlspecialchars($job['companyName']) ?></p>
+
+    <div class="info-grid">
+        <div class="info-box blue"><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($job['location']) ?></div>
+        <div class="info-box orange"><i class="fas fa-briefcase"></i> <?= htmlspecialchars($job['type']) ?></div>
+        <div class="info-box green"><i class="fas fa-clock"></i> <?= htmlspecialchars($job['duration']) ?></div>
+        <div class="info-box yellow"><i class="fas fa-sack-dollar"></i> <?= htmlspecialchars($job['salaryRange']) ?></div>
+    </div>
+
+    <div class="detail-box purple">
+        <i class="fas fa-chart-line"></i> Expérience: <?= htmlspecialchars($job['experience']) ?>
+    </div>
+
+    <div class="detail-box green-card">
+        <i class="fas fa-code"></i> Compétences: <?= htmlspecialchars(implode(', ', array_map('trim', $skills))) ?>
+    </div>
+
+    <div class="section">
+        <h3>Description du poste</h3>
+        <p><?= nl2br(htmlspecialchars($job['description'])) ?></p>
+    </div>
+
+    <div class="section">
+        <h3>Exigences</h3>
+        <p><?= nl2br(htmlspecialchars($job['requirements'])) ?></p>
+    </div>
+</div>

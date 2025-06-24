@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
         if ($fileExt === "pdf") {
-            $uploadDir = "uploaded-files/";
+            $uploadDir = __DIR__ . "/../uploaded-files/";
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0755, true);
             }

@@ -35,7 +35,6 @@ function fetchAllJobs() {
     return $jobs;
 }
 
-// Fetch category name
 function fetchCategoryName($categoryId) {
     $conn = connectDB();
     $categoryId = mysqli_real_escape_string($conn, $categoryId);
@@ -155,26 +154,40 @@ function getRandomTestimonials($conn, $number) {
 }
 
 
-function fetchJobsByEmployer($userId)
-{
+function fetchJobsByEmployer($userId) {
     $conn = connectDB();
-    $query = "SELECT * FROM jobs WHERE postedBy = '$userId'";
+    $query = "SELECT id, title, companyName, location, salaryRange, type, duration, experience, requirements, description, specializations, skills, postedBy, datePosted, status 
+              FROM jobs WHERE postedBy = '$userId'";
     $result = mysqli_query($conn, $query);
     $jobs = [];
     while ($row = mysqli_fetch_assoc($result)) {
         $jobs[] = $row;
     }
+    mysqli_close($conn);
     return $jobs;
 }
 
-function fetchActiveJobsByEmployer($userId)
-{
-    $allJobs = fetchJobsByEmployer($userId);
-    $activeJobs = array_filter($allJobs, function ($job) {
-        return $job['status'] === 'active';
-    });
-    return $activeJobs;
+
+function fetchActiveJobsByEmployer($userId) {
+    $conn = connectDB(); 
+
+    $stmt = mysqli_prepare($conn, "SELECT * FROM jobs WHERE postedBy = ? AND status = 'active'");
+    mysqli_stmt_bind_param($stmt, "s", $userId);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+    $jobs = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $jobs[] = $row;
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn); 
+
+    return $jobs;
 }
+
 
 
 function fetchApplicantsByUser($userId) {

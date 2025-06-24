@@ -1,0 +1,122 @@
+body {
+  padding-top: 100px; 
+}
+
+.about-hero {
+  background: linear-gradient(to right, #0f172a, #0f172a);
+  color: white;
+  padding: 100px 30px 60px;
+  border-radius: 20px;
+  margin: 40px 20px;
+  width: 99%;
+  margin-inline: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.about-hero h1 {
+  font-size: 2.5rem;
+  color: #3b82f6;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.about-hero h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.about-hero p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #d1d5db;
+  max-width: 800px;
+}
+
+
+.audience-section {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 1rem;
+  flex-wrap: wrap;
+}
+
+.audience-box {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  flex: 1;
+  min-width: 300px;
+}
+
+.audience-box h3 {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.values-section {
+  background-color: #ecfdf5;
+  border-radius: 1rem;
+  margin: 2rem 1rem;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.values-section h2 {
+  margin-bottom: 2rem;
+}
+
+.value-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.value-card {
+  background: none;
+  padding: 1rem;
+  flex: 1;
+  min-width: 200px;
+  max-width: 220px;
+}
+.value-card h4 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.value-card p {
+  font-size: 0.9rem;
+}
+
+.icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+  background-color: #e5e7eb;
+}
+
+.ap-blue {
+  background-color: #3b82f6;
+}
+
+.ap-cyan {
+  background-color: #06b6d4;
+}
+
+.ap-violet {
+  background-color: #8b5cf6;
+}
+
+.ap-lime {
+  background-color: #22c55e;
+}

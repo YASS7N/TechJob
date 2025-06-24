@@ -26,7 +26,7 @@
         const toggleClasses = () => navLinks.classList.toggle('active')
         hamBurger.addEventListener('click', toggleClasses);
     </script>
-    <div class="container py-5 mt-3">
+    <div class="container py-5 mt-5">
     <div class="text-center mb-5">
       <h1 class="fw-bold display-5 text-primary">Contactez-Nous</h1>
       <p class="lead text-muted">Nous sommes là pour vous aider. Posez-nous vos questions ou demandes, on est à l'écoute.</p>
