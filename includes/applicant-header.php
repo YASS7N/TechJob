@@ -38,10 +38,6 @@
                 <a href="./LoginPage.php" class="btn-login">Connexion</a>
             <?php endif; ?>
         </div>
-        <?php if (isset($_SESSION['userId'])): ?>
-                <a href="MyAccount.php" class="account-link">
-        <i class="fas fa-user-circle"></i> Mon compte</a>
-            <?php endif; ?>
 
 
       <div class="ham-burger menu-link">

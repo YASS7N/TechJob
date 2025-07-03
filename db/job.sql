@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `applicants` (
   KEY `jobId` (`jobId`),
   CONSTRAINT `applicants_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE,
   CONSTRAINT `applicants_ibfk_2` FOREIGN KEY (`jobId`) REFERENCES `jobs` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table job.applicants: ~0 rows (approximately)
 
@@ -106,9 +106,9 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   KEY `category` (`category`),
   CONSTRAINT `jobs_ibfk_1` FOREIGN KEY (`postedBy`) REFERENCES `users` (`userId`) ON DELETE CASCADE,
   CONSTRAINT `jobs_ibfk_2` FOREIGN KEY (`category`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.jobs: ~1 rows (approximately)
+-- Dumping data for table job.jobs: ~2 rows (approximately)
 INSERT INTO `jobs` (`id`, `postedBy`, `category`, `title`, `companyName`, `location`, `salaryRange`, `duration`, `type`, `datePosted`, `skills`, `status`, `numberOfApplicants`, `description`, `requirements`, `specializations`, `experience`) VALUES
 	(33, 'aa-685aae752ec82', 9, 'Designer Graphique', 'Ecole', 'Tout le maroc', 'MAD 7000-10000', 'full-time', 'remote', '2025-06-24 14:59:00', 'Adobe Photoshop, Illustrator, InDesign, Canva', 'active', 0, 'Nous recherchons un Graphiste talentueux et créatif pour rejoindre notre équipe. Vous serez responsable de la conception visuelle et de la création de supports graphiques variés (print, web, réseaux sociaux, branding, etc.) afin de valoriser l’image de notre entreprise et de nos clients.', 'Diplôme en design graphique, arts visuels ou équivalent\r\n\r\nMaîtrise des logiciels de création graphique : Adobe Photoshop, Illustrator, InDesign, etc.\r\n\r\nExcellente sensibilité artistique et sens du détail\r\n\r\nCapacité à travailler en équipe et à respecter les délais', '41', 'expert-level'),
 	(34, 'je-6828a8ed3f379', 1, 'Developpeur Front End', 'YSNet', 'Meknes, Maroc', 'MAD 6000-10000', 'full-time', 'onsite', '2025-06-24 15:03:19', 'HTML, CSS , Bootstrap , JavaScript , React.js , Vue.js', 'active', 0, 'Nous recherchons un développeur front-end intermédiaire passionné et rigoureux pour rejoindre notre équipe. Vous participerez au développement et à la maintenance des interfaces web en assurant une expérience utilisateur fluide et performante. Vous travaillerez en étroite collaboration avec les designers UX/UI et les développeurs back-end pour implémenter des solutions modernes et efficaces.', 'Expérience confirmée (2 à 5 ans) en développement front-end\r\n\r\nMaîtrise de HTML5, CSS3, JavaScript (ES6+) et d’au moins un framework moderne (React, Vue ou Angular)\r\n\r\nBonne connaissance des principes de responsive design et d’accessibilité web\r\n\r\nMaîtrise des outils de gestion de versions (Git)', '1', 'mid-level');
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `secteurs_activite` (
   `nom_secteur` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom_secteur` (`nom_secteur`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table job.secteurs_activite: ~20 rows (approximately)
 INSERT INTO `secteurs_activite` (`id`, `nom_secteur`) VALUES
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.users: ~6 rows (approximately)
+-- Dumping data for table job.users: ~7 rows (approximately)
 INSERT INTO `users` (`userId`, `fullname`, `username`, `email`, `phone`, `password`, `role`, `profile_picture`, `description`) VALUES
 	('aa-685aae752ec82', 'Ahmed Alaoui', 'Ahmed', 'ahmed@gmail.com', '0661628964', '$2y$10$d89/fuORTiYQS7wGOe1xxOA2XAdrvu7N4BsEzq1P0Woxu/Jg74.HW', 'employer', NULL, NULL),
 	('ar-68374523ecf7d', 'Ahmed Regragui', 'AhmedRegragui', 'ahmedregragui@gmail.com', '065498752', '$2y$10$ctZJinYSd5YWNLuGvuE3juN5y8WS01i9si5NIA8m5fk3Q34FUtaFW', 'employer', NULL, NULL),
