@@ -46,9 +46,14 @@ CREATE TABLE IF NOT EXISTS `applicants` (
   KEY `jobId` (`jobId`),
   CONSTRAINT `applicants_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE,
   CONSTRAINT `applicants_ibfk_2` FOREIGN KEY (`jobId`) REFERENCES `jobs` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.applicants: ~0 rows (approximately)
+-- Dumping data for table job.applicants: ~4 rows (approximately)
+INSERT INTO `applicants` (`id`, `userId`, `jobId`, `cv`, `status`, `experience`, `joiningDate`, `coverLetter`, `nom`, `email`, `telephone`, `adresse`, `github`, `diplome`, `etablissement`, `annee`, `competences`, `langues`, `date_entree`, `cv_filename`) VALUES
+	(24, 'yf-68389cf693b45', 34, '', 'new', 2, NULL, NULL, 'Yassin Fikri', 'yassin.fikri00@gmail.com', '+212762695921', '13 Boulevard Bir Anzarane, Meknès', 'https://github.com/YASS7N', 'Technicien Specialisé', 'EPIM', '2023-2025', 'HTML,CSS,Javascript,PHP,MYSQL', 'Français,Anglais,Arabe', '2025-07-05', '6869255e2cbb2_Yassin_Fikri_CV_2025.pdf'),
+	(32, 'bo-686c0b6231164', 34, '', 'new', 2, NULL, NULL, 'Brahim Ouazzani', 'brahimouazzani@gmail.com', '0660004194', 'Place d\'armes, Meknès', 'https://github.com/brahim9090', 'Technicien Specialisé', 'EPIM', '2023-2025', 'HTML5, CSS3, JavaScript,Responsive Design, Figma', 'Français,Arabe', '2025-08-01', '686c67ab1e6b9_brahim_cv.pdf'),
+	(34, 'me-686c6abbc7d38', 34, '', 'new', 3, NULL, NULL, 'Mohammed El Alami', 'mohammedalami@gmail.com', '0614567890', 'Zitoune, Meknès', 'https://github.com/mohammed', 'Technicien License', 'OFPPT', '2021-2024', 'HTML5, CSS3, JavaScript,Responsive Design, Figma etc...', 'Français,Anglais,Arabe', '2025-09-01', '686c6b663671f_mohammed_cv.pdf'),
+	(35, 'ha-686c6e2e31479', 34, '', 'new', 5, NULL, NULL, 'Hatim Alaoui', 'hatimalaoui@gmail.com', '+212762695921', 'Marjane, Meknès', 'https://github.com/Hatim', 'Technicien Specialisé', 'EST', '2020-2022', 'HTML5, CSS3, JavaScript,Responsive Design, Figma', 'Français,Arabe', '2025-08-01', '686c6e9842784_mohammed_cv.pdf');
 
 -- Dumping structure for table job.categories
 CREATE TABLE IF NOT EXISTS `categories` (
@@ -56,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `title` varchar(255) NOT NULL,
   `numberOfJobs` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table job.categories: ~10 rows (approximately)
 INSERT INTO `categories` (`id`, `title`, `numberOfJobs`) VALUES
@@ -78,9 +83,15 @@ CREATE TABLE IF NOT EXISTS `featuredjobs` (
   PRIMARY KEY (`id`),
   KEY `jobId` (`jobId`),
   CONSTRAINT `featuredjobs_ibfk_1` FOREIGN KEY (`jobId`) REFERENCES `jobs` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.featuredjobs: ~0 rows (approximately)
+-- Dumping data for table job.featuredjobs: ~4 rows (approximately)
+INSERT INTO `featuredjobs` (`id`, `jobId`) VALUES
+	(11, 34),
+	(14, 35),
+	(16, 36),
+	(13, 37),
+	(15, 38);
 
 -- Dumping structure for table job.jobs
 CREATE TABLE IF NOT EXISTS `jobs` (
@@ -106,12 +117,17 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   KEY `category` (`category`),
   CONSTRAINT `jobs_ibfk_1` FOREIGN KEY (`postedBy`) REFERENCES `users` (`userId`) ON DELETE CASCADE,
   CONSTRAINT `jobs_ibfk_2` FOREIGN KEY (`category`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.jobs: ~2 rows (approximately)
+-- Dumping data for table job.jobs: ~6 rows (approximately)
 INSERT INTO `jobs` (`id`, `postedBy`, `category`, `title`, `companyName`, `location`, `salaryRange`, `duration`, `type`, `datePosted`, `skills`, `status`, `numberOfApplicants`, `description`, `requirements`, `specializations`, `experience`) VALUES
-	(33, 'aa-685aae752ec82', 9, 'Designer Graphique', 'Ecole', 'Tout le maroc', 'MAD 7000-10000', 'full-time', 'remote', '2025-06-24 14:59:00', 'Adobe Photoshop, Illustrator, InDesign, Canva', 'active', 0, 'Nous recherchons un Graphiste talentueux et créatif pour rejoindre notre équipe. Vous serez responsable de la conception visuelle et de la création de supports graphiques variés (print, web, réseaux sociaux, branding, etc.) afin de valoriser l’image de notre entreprise et de nos clients.', 'Diplôme en design graphique, arts visuels ou équivalent\r\n\r\nMaîtrise des logiciels de création graphique : Adobe Photoshop, Illustrator, InDesign, etc.\r\n\r\nExcellente sensibilité artistique et sens du détail\r\n\r\nCapacité à travailler en équipe et à respecter les délais', '41', 'expert-level'),
-	(34, 'je-6828a8ed3f379', 1, 'Developpeur Front End', 'YSNet', 'Meknes, Maroc', 'MAD 6000-10000', 'full-time', 'onsite', '2025-06-24 15:03:19', 'HTML, CSS , Bootstrap , JavaScript , React.js , Vue.js', 'active', 0, 'Nous recherchons un développeur front-end intermédiaire passionné et rigoureux pour rejoindre notre équipe. Vous participerez au développement et à la maintenance des interfaces web en assurant une expérience utilisateur fluide et performante. Vous travaillerez en étroite collaboration avec les designers UX/UI et les développeurs back-end pour implémenter des solutions modernes et efficaces.', 'Expérience confirmée (2 à 5 ans) en développement front-end\r\n\r\nMaîtrise de HTML5, CSS3, JavaScript (ES6+) et d’au moins un framework moderne (React, Vue ou Angular)\r\n\r\nBonne connaissance des principes de responsive design et d’accessibilité web\r\n\r\nMaîtrise des outils de gestion de versions (Git)', '1', 'mid-level');
+	(34, 'je-6828a8ed3f379', 1, 'Developpeur Front End', 'YSNet', 'Meknes, Maroc', 'MAD 6000-10000', 'full-time', 'onsite', '2025-06-24 15:03:19', 'HTML, CSS , Bootstrap , JavaScript , React.js , Vue.js', 'active', 0, 'Nous recherchons un développeur front-end intermédiaire passionné et rigoureux pour rejoindre notre équipe. Vous participerez au développement et à la maintenance des interfaces web en assurant une expérience utilisateur fluide et performante. Vous travaillerez en étroite collaboration avec les designers UX/UI et les développeurs back-end pour implémenter des solutions modernes et efficaces.', 'Expérience confirmée (2 à 5 ans) en développement front-end\r\n\r\nMaîtrise de HTML5, CSS3, JavaScript (ES6+) et d’au moins un framework moderne (React, Vue ou Angular)\r\n\r\nBonne connaissance des principes de responsive design et d’accessibilité web\r\n\r\nMaîtrise des outils de gestion de versions (Git)', '1', 'mid-level'),
+	(35, 'ha-686c0ce134d66', 3, 'Analyste en sécurité', 'STE DataLimited', 'Casablanca, Maroc', 'MAD 10000-150000', 'full-time', 'onsite', '2025-07-07 19:31:58', 'Connaissance des principes de la sécurité des systèmes d\'information.', 'active', 0, 'En tant qu\'Analyste en sécurité, vous serez responsable de l\'identification, de la gestion et de la résolution des incidents de sécurité. Vous surveillerez les systèmes pour détecter toute activité suspecte et proposerez des solutions pour renforcer la sécurité de l\'infrastructure informatique. Vous travaillerez en étroite collaboration avec les équipes techniques pour assurer la conformité aux normes de sécurité et la protection des données sensibles.', 'Diplôme en informatique ou dans un domaine lié à la cybersécurité.\r\n\r\nExpérience pratique ou stage en sécurité des systèmes d\'information (souhaité).\r\n\r\nBonne maîtrise du français et de l\'anglais (écrit et oral).', '11', 'senior-level'),
+	(36, 'jk-68374716d9a61', 9, 'UI/UX Designer', 'DesignTech Solutions', 'Tout le maroc', 'MAD 8000-12000', 'contract', 'remote', '2025-07-07 19:36:35', 'Maîtrise des outils de design comme Sketch, Figma, Adobe XD, et InVision.', 'active', 0, 'En tant que UI/UX Designer, vous serez responsable de la conception et de l\'optimisation des interfaces utilisateur pour nos produits numériques. Vous collaborerez avec les équipes de développement et de marketing pour créer des expériences utilisateur exceptionnelles. Vous serez impliqué dans la recherche utilisateur, la définition des parcours utilisateurs, et la création de designs visuellement attractifs et fonctionnels.', 'Diplôme en design graphique, en interaction utilisateur (UX/UI) ou dans un domaine similaire.\r\n\r\nExpérience dans un rôle de UI/UX Design, même sous forme de stage ou projet freelance.\r\n\r\nPortfolio avec des exemples de projets réalisés.', '41', 'expert-level'),
+	(37, 'fb-686c0abd87777', 1, 'Développeur Full Stack', 'TechInnovate Maroc', 'Rabat, Maroc', 'MAD 12000-15000', 'full-time', 'onsite', '2025-07-07 19:39:20', 'Maîtrise des technologies front-end (HTML, CSS, JavaScript, React, Angular, Vue.js), back-end (Node.js, Java, Python, PHP), bases de données (MySQL, PostgreSQL, MongoDB), API RESTful, Git, et bonnes pratiques de développement.', 'active', 0, 'En tant que Développeur Full Stack, vous serez responsable de la création, du développement et de la maintenance des applications web complètes, des interfaces utilisateur aux services back-end. Vous travaillerez en étroite collaboration avec les équipes produits, designers, et autres développeurs pour assurer la qualité et la performance des solutions. Vous participerez à toutes les étapes du cycle de vie des applications, de la conception à la mise en production.', 'Diplôme en informatique, génie logiciel, ou un domaine similaire.\r\n\r\nExpérience professionnelle dans le développement web full-stack.\r\n\r\nPortfolio ou exemples de projets réalisés (souhaité).\r\n\r\nBonne maîtrise de l\'anglais technique, avec une capacité à communiquer efficacement en équipe.', '3', 'expert-level'),
+	(38, 'aa-686c14bd00180', 1, 'Développeur de site E-commerce (Mission)', 'Evo Clothes', 'Tout le maroc', 'MAD 5000-10000', 'full-time', 'onsite', '2025-07-07 21:15:57', 'Expertise en développement de sites e-commerce (WooCommerce, Shopify, Magento, Prestashop), HTML, CSS, JavaScript, intégration de passerelles de paiement, gestion de bases de données, optimisation SEO et expérience utilisateur.', 'active', 0, 'Nous recherchons un développeur pour créer et optimiser un site e-commerce performant et sécurisé. La mission implique le développement complet de la plateforme, l\'intégration de fonctionnalités de paiement, la gestion des stocks, et l’optimisation pour une expérience utilisateur fluide. Vous serez en charge de l’intégration de la charte graphique, des tests de performance et de la mise en ligne du site.', 'Expérience prouvée en développement de sites e-commerce (portfolio requis).\r\n\r\nBonne maîtrise des CMS et plateformes e-commerce (WooCommerce, Shopify, Magento, Prestashop).\r\n\r\nConnaissances solides en SEO, UX/UI et intégration des outils marketing (Google Analytics, Google Ads).\r\n\r\nCapacité à travailler de manière autonome et à respecter des délais serrés.', '3', 'expert-level'),
+	(39, 'aa-686c14bd00180', 9, 'Designer Graphique pour Vêtements (T-shirts, Hoodies, etc.)', 'Evo Clothes', 'Tout le maroc', 'MAD 2000-5000', 'part-time', 'remote', '2025-07-07 21:24:42', 'Maîtrise des logiciels de design (Adobe Illustrator, Photoshop), créativité dans la conception de graphiques pour vêtements, sens du style et des tendances, compréhension des techniques d\'impression (sérigraphie, impression numérique), capacité à travailler avec des briefs créatifs.', 'active', 0, 'Nous recherchons un designer graphique passionné pour créer des designs uniques et tendances pour nos collections de t-shirts, hoodies et autres vêtements. Vous serez responsable de la création de graphiques attrayants qui captent l’attention, tout en respectant les tendances actuelles du marché de la mode. Vous travaillerez en étroite collaboration avec notre équipe pour produire des designs originaux et prêts pour', 'Expérience préalable dans la création de graphiques pour vêtements ou produits similaires.\r\n\r\nPortfolio avec des exemples de créations pour des vêtements (souhaité).\r\n\r\nBonne maîtrise des outils de conception (Adobe Illustrator, Photoshop, etc.).\r\n\r\nCapacité à respecter les délais et à gérer plusieurs projets à la fois.', '42', 'expert-level'),
+	(40, 'je-6828a8ed3f379', 1, 'Developpeur BackEnd', 'YSNet', 'Casablanca, Maroc', 'MAD 10000-15000', 'full-time', 'onsite', '2025-07-08 02:07:34', 'PHP, Laravel, MySQL, REST API, Git, Docker', 'closed', 0, 'Nous recherchons un Développeur Back-End senior talentueux et motivé pour rejoindre notre équipe technique à Casablanca. Vous serez responsable de la conception, du développement et de la maintenance des services back-end pour nos applications web. Vous collaborerez étroitement avec l’équipe front-end, DevOps et produit pour livrer des solutions robustes, évolutives et performantes.', 'Minimum 5 ans d’expérience en développement back-end.\r\n\r\nExcellente maîtrise de PHP et du framework Laravel.\r\n\r\nBonne compréhension des bases de données relationnelles (MySQL).\r\n\r\nExpérience dans la conception d’API RESTful.\r\n\r\nMaîtrise des outils de versioning (Git).', '2', 'senior-level');
 
 -- Dumping structure for table job.secteurs_activite
 CREATE TABLE IF NOT EXISTS `secteurs_activite` (
@@ -233,18 +249,24 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` enum('admin','applicant','employer') NOT NULL,
   `profile_picture` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
+  `reset_token` varchar(255) DEFAULT NULL,
+  `token_expires` datetime DEFAULT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table job.users: ~7 rows (approximately)
-INSERT INTO `users` (`userId`, `fullname`, `username`, `email`, `phone`, `password`, `role`, `profile_picture`, `description`) VALUES
-	('aa-685aae752ec82', 'Ahmed Alaoui', 'Ahmed', 'ahmed@gmail.com', '0661628964', '$2y$10$d89/fuORTiYQS7wGOe1xxOA2XAdrvu7N4BsEzq1P0Woxu/Jg74.HW', 'employer', NULL, NULL),
-	('ar-68374523ecf7d', 'Ahmed Regragui', 'AhmedRegragui', 'ahmedregragui@gmail.com', '065498752', '$2y$10$ctZJinYSd5YWNLuGvuE3juN5y8WS01i9si5NIA8m5fk3Q34FUtaFW', 'employer', NULL, NULL),
-	('je-6828a8ed3f379', 'Yahou', 'JobEmployer', 'yassinfikryy@gmail.com', '0762695921', '$2y$10$scepp4g/KwVUEn8S.QX2ZOn9jB8QTzzO0FdYDY6n0sa4HeZfz1r4e', 'employer', NULL, ''),
-	('jk-68374716d9a61', 'Jawad Kadi', 'Jawad_Kadi', 'jawadkadi@gmail.com', '0776564121', '$2y$10$sFz2JsvMpApxkzkT8jrBoON5eYJk0sFvWFtiqpKZd.tsYGPdU17u.', 'employer', NULL, NULL),
-	('ut-6855e85f9c582', 'User Test', 'UserTest', 'yassin.fikri00@gmail.com', '0762695921', '$2y$10$gO06rYtSZ38j3P.7iH8U5e9lkE88GRRvq5.4FxJYpmZ9f2Ff8LduK', 'applicant', NULL, NULL),
-	('wa-68374656bb66a', 'Walid Alaoui', 'Walid', 'walid@gmail.com', '0761627055', '$2y$10$fro/.5DIcSQxnHJdakhCeek/9iAJnt6QNBnie/BvjxcyMaTUw2Ami', 'employer', NULL, NULL),
-	('yf-68389cf693b45', 'Yassin Fikri', 'Yassin', 'yassin.fikri00@gmail.com', '0762695921', '$2y$10$hWnE96XGJS/M2PGf7QNEFOaPyoBd3pZSEIGEG5W/G0twfED22o9a.', 'applicant', NULL, NULL);
+-- Dumping data for table job.users: ~10 rows (approximately)
+INSERT INTO `users` (`userId`, `fullname`, `username`, `email`, `phone`, `password`, `role`, `profile_picture`, `description`, `reset_token`, `token_expires`) VALUES
+	('686a81b2200ca', 'Yassin Fikri', 'AdminYassin', 'yassin.fikri00@gmail.com', '0762695921', 'yassinelf', 'admin', NULL, NULL, NULL, NULL),
+	('aa-686c14bd00180', 'Ahmed Amrani', 'AhmedAmrani', 'ahmedamrani01@gmail.com', '0652695121', '$2y$10$o3qfWu5fKQeDfbdSx1wvgO1up2Yjq1sQdMJihwqKtHzlSZsFacNEG', 'employer', NULL, NULL, NULL, NULL),
+	('bo-686c0b6231164', 'Brahim Ouazzani', 'Brahim', 'brahimouazzani@gmail.com', '0660004194', '$2y$10$g8x6RtReIo1x6CTaIKIxpOjLAB8E7wFDwobX0spN5EKnvVfykJJTO', 'applicant', NULL, NULL, NULL, NULL),
+	('fb-686c0abd87777', 'Fatima Zahra Bennani', 'Fatima Zahra Bennani', 'fatimazahra12@gmail.com', '0612345678', '$2y$10$jIGGgM4BhIi8ICzQG9EN3eOGjXI6J8oIj29zTctGI.Vm5HWE8sVJa', 'employer', NULL, NULL, NULL, NULL),
+	('ha-686c0ce134d66', 'Hamza Alaoui', 'Hamza Alaoui', 'hamza.alaoui05@gmail.com', '0614567890', '$2y$10$/qP7VFRstqVLt1sbvNE7DenN5Q.R9ZxMHWE48aaHkxgVlJUogtVnC', 'employer', NULL, NULL, NULL, NULL),
+	('ha-686c6e2e31479', 'Hatim Alaoui', 'Hatim', 'hatimalaoui@gmail.com', '0776564121', '$2y$10$0arXDadcv4pL0zngP4cv1ecRwdt3vRgcmlLwhpxH9CCt9OSQH4C.2', 'applicant', NULL, NULL, NULL, NULL),
+	('je-6828a8ed3f379', 'Othmane Bouziane', 'Othmane', 'Othmane@gmail.com', '0762695921', '$2y$10$scepp4g/KwVUEn8S.QX2ZOn9jB8QTzzO0FdYDY6n0sa4HeZfz1r4e', 'employer', NULL, '', NULL, NULL),
+	('jk-68374716d9a61', 'Jawad Kadi', 'Jawad_Kadi', 'jawadkadi@gmail.com', '0776564121', '$2y$10$sFz2JsvMpApxkzkT8jrBoON5eYJk0sFvWFtiqpKZd.tsYGPdU17u.', 'employer', NULL, NULL, NULL, NULL),
+	('kh-686c2e8f004f5', 'Khalid Hakimi', 'KhalidHakimi', 'khalidhakimi@gmail.com', '0761623545', '$2y$10$z8IgJrZfmi7YTGu4DSKpbuzsA6lpStNvm4BpXfwixNaxnuJ4It7A6', 'employer', NULL, NULL, NULL, NULL),
+	('me-686c6abbc7d38', 'Mohammed El Alami', 'Mohammed', 'mohammedalami@gmail.com', '0614567890', '$2y$10$JEabq2mAwwF6oX051lIrW.wrURu9d6NC3aQo9kfjYSd/FFikt99We', 'applicant', NULL, NULL, NULL, NULL),
+	('yf-68389cf693b45', 'Yassin Fikri', 'Yassin', 'yassin.fikri00@gmail.com', '0762695921', '$2y$10$hWnE96XGJS/M2PGf7QNEFOaPyoBd3pZSEIGEG5W/G0twfED22o9a.', 'applicant', NULL, NULL, '1ea795eda7bc40aed93cc9776654b4cd1193315460b44a75ea0624992ca9b22c', '2025-07-07 20:06:57');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
