@@ -1,12 +1,9 @@
 <?php
-
 session_start();
-
 if (!isset($_SESSION['admin'])) {
     header("Location: ./admin-login.php");
     exit;
 }
-
 $name = $_SESSION['admin']['fullname'];
 ?>
 
@@ -16,135 +13,200 @@ $name = $_SESSION['admin']['fullname'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/dashboard.css">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+        <link rel="stylesheet" href="../css/dash.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                JOB SPARK Admin Dashboard
-            </a>
-            <span class="navbar-text text-white">Welcome, <strong><?php echo $name;?></strong></span>
-            <a  class="btn btn-danger" href="./handlers/logout-admin.php">LOGOUT</a>
-        </div>
-    </nav>
 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
-                <div class="position-sticky">
-                    <ul class="nav flex-column" id="sidebar-menu">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#" data-section="job-list">Job List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-section="category-list">Category List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-section="featured-jobs">Featured Jobs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-section="user-list">User List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-section="applicant-list">Applicant List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-section="add-admin">Add Admin</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-            <!-- Main Content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10" id="main-content">
-                <h2>Welcome to Admin Dashboard</h2>
-                <p>Select an option from the sidebar to manage the portal.</p>
-            </main>
-        </div>
+        <a class="navbar-brand" href="#"><i class="fa-solid fa-rocket"></i> TECH JOB Admin Dashboard</a>
+        <span class="navbar-text ms-auto text-white">Welcome back, <strong><?php echo htmlspecialchars($name); ?></strong></span>
+        <a class="btn btn-danger ms-3" href="./handlers/logout-admin.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
+</nav>
 
-    <script>
-        const contentMap = {
-            'job-list': 'Views/job-list.php',
-            'category-list': 'Views/category-list.php',
-            'featured-jobs': 'Views/featured-jobs.php',
-            'user-list': 'Views/user-list.php',
-            'applicant-list': 'Views/applicant-list.php',
-            'add-admin': 'Views/add-admin.php'
-        };
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+            <div class="position-sticky">
+                <ul class="nav flex-column" id="sidebar-menu">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-section="dashboard">
+                            <i class="fa-solid fa-gauge"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="job-list">
+                            <i class="fa-solid fa-briefcase"></i> Job List
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="category-list">
+                            <i class="fa-solid fa-layer-group"></i> Category List
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="featured-jobs">
+                            <i class="fa-solid fa-star"></i> Featured Jobs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="user-list">
+                            <i class="fa-solid fa-users"></i> User List
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="applicant-list">
+                            <i class="fa-solid fa-user-check"></i> Applicant List
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="add-admin">
+                            <i class="fa-solid fa-user-plus"></i> Add Admin
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-        const baseURL = `${window.location.origin}/jobSpark/admin/`;
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10" id="main-content">
+            <!-- Loaded content will appear here -->
+        </main>
+    </div>
+</div>
 
-        document.getElementById('sidebar-menu').addEventListener('click', (event) => {
-            if (event.target.tagName === 'A') {
-                event.preventDefault();
+<script>
+    const contentMap = {
+        'job-list': 'Views/job-list.php',
+        'category-list': 'Views/category-list.php',
+        'featured-jobs': 'Views/featured-jobs.php',
+        'user-list': 'Views/user-list.php',
+        'applicant-list': 'Views/applicant-list.php',
+        'add-admin': 'Views/add-admin.php',
+        'dashboard': 'Views/admin-stats.php'
+    };
 
-                // Remove 'active' class from all links
-                document.querySelectorAll('#sidebar-menu .nav-link').forEach(link => link.classList.remove('active'));
+    const baseURL = `${window.location.origin}/TechJob/admin/`;
 
-                // Add 'active' class to the clicked link
-                event.target.classList.add('active');
+    document.getElementById('sidebar-menu').addEventListener('click', (event) => {
+        if (event.target.closest('a')) {
+            event.preventDefault();
+            const link = event.target.closest('a');
 
-                // Get the section and mapped URL
-                const section = event.target.getAttribute('data-section');
-                if (contentMap[section]) {
-                    const pageUrl = `${baseURL}${contentMap[section]}`;
-                    
-                    // Load content via fetch
-                    fetch(pageUrl)
-                        .then(response => response.text())
-                        .then(html => {
-                            document.getElementById('main-content').innerHTML = html;
+            // Toggle active link
+            document.querySelectorAll('#sidebar-menu .nav-link').forEach(link => link.classList.remove('active'));
+            link.classList.add('active');
 
-                            // Update browser URL
-                            const newUrl = `${baseURL}dashboard.php?section=${section}`;
-                            history.pushState({ section }, '', newUrl);
-                        })
-                        .catch(error => console.error('Error loading content:', error));
-                }
+            const section = link.getAttribute('data-section');
+            if (contentMap[section]) {
+                const pageUrl = `${baseURL}${contentMap[section]}`;
+                fetch(pageUrl)
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('main-content').innerHTML = html;
+                        history.pushState({ section }, '', `${baseURL}dashboard.php?section=${section}`);
+                    })
+                    .catch(err => console.error(err));
             }
-        });
+        }
+    });
 
-        // Handle back/forward navigation
-        window.addEventListener('popstate', (event) => {
-            if (event.state && event.state.section) {
-                const section = event.state.section;
-                if (contentMap[section]) {
-                    const pageUrl = `${baseURL}${contentMap[section]}`;
-                    fetch(pageUrl)
-                        .then(response => response.text())
-                        .then(html => {
-                            document.getElementById('main-content').innerHTML = html;
-
-                            // Update active link
-                            document.querySelectorAll('#sidebar-menu .nav-link').forEach(link => link.classList.remove('active'));
-                            document.querySelector(`[data-section="${section}"]`).classList.add('active');
-                        })
-                        .catch(error => console.error('Error handling popstate:', error));
-                }
+    window.addEventListener('popstate', (event) => {
+        if (event.state?.section) {
+            const section = event.state.section;
+            if (contentMap[section]) {
+                const pageUrl = `${baseURL}${contentMap[section]}`;
+                fetch(pageUrl)
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('main-content').innerHTML = html;
+                        document.querySelectorAll('#sidebar-menu .nav-link').forEach(link => link.classList.remove('active'));
+                        document.querySelector(`[data-section="${section}"]`).classList.add('active');
+                    });
             }
-        });
-
-        // Load the initial section based on URL query
-        const urlParams = new URLSearchParams(window.location.search);
-        const initialSection = urlParams.get('section');
-        if (initialSection && contentMap[initialSection]) {
-            document.querySelector(`[data-section="${initialSection}"]`).click();
         }
+    });
 
-         function hideMe() {
-            const box = document.getElementById('message');
-            box.style.display = 'none';
-            console.log(box.style.display);
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialSection = urlParams.get('section') || 'dashboard';
+    document.querySelector(`[data-section="${initialSection}"]`).click();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+<canvas id="particles-canvas"></canvas>
+
+<div class="floating-shape" style="top: 15%; left: 10%;"></div>
+<div class="floating-shape" style="top: 35%; left: 80%; width: 120px; height: 120px;"></div>
+<div class="floating-shape" style="top: 70%; left: 30%; width: 100px; height: 100px;"></div>
+
+<div class="scan-line"></div>
+
+<script>
+    const canvas = document.getElementById("particles-canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        size: Math.random() * 2 + 1,
+        hue: Math.random() * 60 + 180
+    });
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsl(${p.hue}, 100%, 70%)`;
+        ctx.fill();
+
+        // draw connection lines
+        for (let j = i + 1; j < particles.length; j++) {
+            const dx = p.x - particles[j].x;
+            const dy = p.y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 100) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `hsla(${p.hue}, 100%, 60%, 0.1)`;
+                ctx.stroke();
+            }
         }
-    </script>
+    });
 
+    requestAnimationFrame(animate);
+}
 
+animate();
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</script>
+
 </body>
 </html>

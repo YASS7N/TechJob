@@ -23,7 +23,7 @@ if (isset($_GET['success'])) {
         <div class="alert alert-danger"><?= htmlspecialchars($errorMessage) ?></div>
     <?php endif; ?>
 
-    <form method="POST" action="../../jobSpark/admin/handlers/new-admin.php">
+    <form method="POST" action="../../TechJob/admin/handlers/new-admin.php">
         <div class="mb-3">
             <label for="fullname" class="form-label">Full Name</label>
             <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter full name" required>

@@ -1,52 +1,62 @@
 <?php
-
-require_once '../../includes/db-connection.php';
-
+require_once __DIR__ . '/../../includes/db-connection.php';
 $conn = connectDB();
 
-// Fetch jobs from the database
-$query = "SELECT jobs.id, jobs.title, jobs.companyName, jobs.location, jobs.status, categories.title AS category
-          FROM jobs
-          INNER JOIN categories ON jobs.category = categories.id";
-$result = $conn->query($query);
-$i=0;
+$sql = "
+    SELECT 
+        jobs.id, 
+        jobs.title, 
+        jobs.companyName, 
+        jobs.location, 
+        jobs.status, 
+        categories.title AS categoryTitle
+    FROM jobs
+    LEFT JOIN categories ON jobs.category = categories.id
+    ORDER BY jobs.id DESC
+";
+$result = mysqli_query($conn, $sql);
 ?>
-<div class="container">
-    <h2 class="mt-4">Job List</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Company</th>
-                <th>Location</th>
-                <th>Category</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($job = $result->fetch_assoc()): ?>
-                <tr>
-                    <td><?= ++$i; ?></td>
-                    <td><?= htmlspecialchars($job['id']) ?></td>
-                    <td><?= htmlspecialchars($job['title']) ?></td>
-                    <td><?= htmlspecialchars($job['companyName']) ?></td>
-                    <td><?= htmlspecialchars($job['location']) ?></td>
-                    <td><?= htmlspecialchars($job['category']) ?></td>
-                    <td><?= htmlspecialchars($job['status']) ?></td>
-                    <td>
-                        <form method="post" action="../../jobSpark/admin/handlers/delete-job.php">
-                            <input type="hidden" name="jobId" value="<?= htmlspecialchars($job['id']) ?>">
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
+
+<h2 class="text-white mb-4">Liste des Offres</h2>
+
+<div class="row g-3">
+    <?php while ($row = mysqli_fetch_assoc($result)): ?>
+        <div class="col-12">
+            <div class="card d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center p-4">
+                <div>
+                    <h5 class="mb-2"><?= htmlspecialchars($row['title']) ?></h5>
+                    <p class="mb-1 text-white-6 0">
+                        <i class="fa-solid fa-building"></i> <?= htmlspecialchars($row['companyName']) ?> &nbsp;
+                        <i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($row['location']) ?>
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge text-white" style="background-color: <?= categoryColor($row['categoryTitle']) ?>;">
+                            <i class="fa-solid fa-tag"></i> <?= htmlspecialchars($row['categoryTitle']) ?>
+                        </span>
+
+                        <span class="badge <?= $row['status'] === 'active' ? 'bg-success' : 'bg-warning text-white' ?>">
+                            <?= htmlspecialchars($row['status']) ?>
+                        </span>
+                    </div>
+                </div>
+                <div class="mt-3 mt-md-0 d-flex align-items-center gap-3">
+                    <small class="text-light">ID #<?= $row['id'] ?></small>
+                    <button class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    <?php endwhile; ?>
 </div>
+
 <?php
-$conn->close();
+function categoryColor($category) {
+    $map = [
+        'Design' => '#f97316',        // orange
+        'Development' => '#3b82f6',   // blue
+        'Management' => '#c084fc',    // violet
+    ];
+    return $map[$category] ?? '#94a3b8'; // default fallback
+}
 ?>

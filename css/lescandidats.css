@@ -38,11 +38,35 @@
 }
 
 .applicant-card {
-  border: 1px solid #e0e0e0;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 2px solid #3a6eff; /* stronger solid blue border */
   border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  padding: 1.8rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+.applicant-card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, rgba(0,242,255,0.3), rgba(58,110,255,0.2));
+  transform: rotate(45deg);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.applicant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
 .card-header {
   display: flex;
   align-items: center;

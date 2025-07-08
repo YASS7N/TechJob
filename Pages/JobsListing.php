@@ -24,7 +24,7 @@ if ($categoryId == $default) {
         <link rel="stylesheet" href="../styles/HomePage/header.css">
         <link rel="stylesheet" href="../styles/HomePage/footer.css">
         <link rel="stylesheet" href="../styles/HomePage/common-styles.css">
-        <link rel="stylesheet" href="../css/jobslisting.css">
+        <link rel="stylesheet" href="../css/joblisting.css">
     </head>
     <body>
 

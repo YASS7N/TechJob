@@ -12,7 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $username = trim($_POST['username']);
-    $password = trim($_POST['password']); 
+    $password = trim($_POST['password']);
+    $remember = isset($_POST['remember']); 
 
     $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
@@ -25,8 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $user['password'])) {
             $_SESSION['userId'] = $user['userId'];
             $_SESSION['role'] = $user['role'];
-            $_SESSION['user'] = $user; 
-            $_SESSION['login_success'] = "Welcome, " . $user['username'] . "!"; 
+            $_SESSION['user'] = $user;
+            $_SESSION['login_success'] = "Welcome, " . $user['username'] . "!";
+
+            // Remember Me: set cookie for 30 days
+            if ($remember) {
+                setcookie("remember_me", $user['userId'], time() + (30 * 24 * 60 * 60), "/");
+            }
 
             $redirectPage = ($user['role'] === 'employer') ? "EmployerPage.php" : "HomePage.php";
             header("Location: ../Pages/$redirectPage");

@@ -1,0 +1,124 @@
+/* Reset & Background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(ellipse at bottom, #0d0c1d 0%, #0b0a1b 100%);
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+  color: white;
+}
+
+/* Particle canvas (z-index) */
+#particles-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Geometric shapes */
+.floating-shape {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  animation: float 6s ease-in-out infinite;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+/* Scan line */
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+  animation: scan 8s linear infinite;
+  z-index: 2;
+}
+
+/* Glassmorphism Login Box */
+.container {
+  position: relative;
+  z-index: 3;
+  max-width: 350px;
+  margin: 10% auto;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  text-align: center;
+  color: white;
+}
+
+.container h1 {
+  font-size: 28px;
+  background: linear-gradient(90deg, #00ffff, #8a2be2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container h2 {
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #00ffff, #8a2be2);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  box-shadow: 0 0 10px #00ffff;
+}
+
+.link {
+  display: block;
+  margin-top: 15px;
+  color: #00ffff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(45deg); }
+  50% { transform: translateY(-30px) rotate(90deg); }
+}
+
+/* Scan Animation */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}

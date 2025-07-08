@@ -1,13 +1,13 @@
 <?php
 session_start();
 $userId = $_SESSION['userId'] ?? null;
+
 if (!$userId) {
     $redirect = true;
-} else {
-    $redirect = false;
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES['cv_file']) && $_FILES['cv_file']['error'] !== UPLOAD_ERR_NO_FILE) {
     $nom = $_POST["nom"] ?? "";
     $email = $_POST["email"] ?? "";
     $telephone = $_POST["telephone"] ?? "";
@@ -59,29 +59,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         $stmt = $conn->prepare("INSERT INTO applicants 
-        (jobId, userId, nom, email, telephone, adresse, github, diplome, etablissement, annee, competences, langues, experience, date_entree, cv_filename)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
+            (jobId, userId, nom, email, telephone, adresse, github, diplome, etablissement, annee, competences, langues, experience, date_entree, cv_filename)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         if ($stmt) {
-        $stmt->bind_param("sssssssssssssss", 
-         $jobId, $userId, $nom, $email, $telephone, $adresse, $github, $diplome, $etablissement, $annee, 
-         $competences, $langues, $experience, $date_entree, $uniqueName);
+            $stmt->bind_param("sssssssssssssss", 
+                $jobId, $userId, $nom, $email, $telephone, $adresse, $github, $diplome,
+                $etablissement, $annee, $competences, $langues, $experience, $date_entree, $uniqueName);
 
             if ($stmt->execute()) {
-                echo "<script>alert('Votre CV a été soumis avec succès et enregistré !');</script>";
+                $_SESSION['application_success'] = true;
+                header("Location: HomePage.php");
+                exit;
             } else {
-                echo "<script>alert('Erreur lors de l\'exécution de la requête: " . $stmt->error . "');</script>";
+                $upload_error = "Erreur lors de l'enregistrement: " . $stmt->error;
             }
 
             $stmt->close();
         } else {
-            echo "<script>alert('Erreur de préparation de la requête: " . $conn->error . "');</script>";
+            $upload_error = "Erreur de préparation de la requête: " . $conn->error;
         }
 
         $conn->close();
-    } else {
-        echo "<script>alert('Erreur: " . $upload_error . "');</script>";
+    }
+
+    if (!$upload_success) {
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur',
+                    text: " . json_encode($upload_error) . ",
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>";
     }
 }
 ?>
@@ -91,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Créateur de CV IT</title>
+  <title>Application - TechJob</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="../css/jobapplication.css">
@@ -111,7 +123,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </script>
 <?php exit; endif; ?>
   <div class="container py-5">
-    <h2 class="text-center fw-bold mb-4">Créateur de CV IT</h2>
 
     <form method="POST" enctype="multipart/form-data">
       <!-- Informations personnelles -->
@@ -233,5 +244,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
     </form>
   </div>
+
+  <?php if (isset($redirect) && $redirect): ?>
+    <script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Vous devez être connecté !',
+            text: 'Veuillez vous connecter pour postuler à un emploi.',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            window.location.href = 'LoginPage.php';
+        });
+    </script>
+<?php exit; endif; ?>
+
 </body>
 </html>

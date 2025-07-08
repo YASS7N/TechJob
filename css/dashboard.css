@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar {
+    background-color: #2a2a2a;
+    border-bottom: 1px solid #333;
+}
+
+
+.navbar .navbar-brand {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.navbar .navbar-text strong {
+    color: #22d3ee;
+}
+
+.navbar .btn-danger {
+    background-color: #ef4444;
+    border: none;
+    font-weight: bold;
+}
+
+.sidebar {
+    background-color: #2a2a2a;
+    border-right: 1px solid #333;
+}
+.sidebar .nav-link {
+    color: #b0b0b0;
+}
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background-color: #333;
+    color: #ffffff;
+}
+
+
+/* Main Content */
+#main-content {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    min-height: 100vh;
+}
+
+h2 {
+    font-weight: bold;
+    color: #c084fc;
+}
+
+p {
+    color: #e2e8f0;
+}
+
+/* Cards (if you add stats) */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.card .value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #facc15;
+}
+
+.card .change {
+    color: #10b981;
+    font-size: 0.9rem;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    #main-content {
+        margin-top: 200px;
+    }
+}
+/* Table Styling */
+table {
+    width: 100%;
+    color: #f1f5f9; /* Light text for dark background */
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+    color: #60a5fa; /* Neon blue headers */
+    font-weight: 600;
+    background-color: transparent;
+}
+
+td {
+    color: #e2e8f0; /* Slightly off-white for rows */
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+

@@ -105,24 +105,41 @@ function getCategories($conn){
 
 function getFeaturedJobs($conn) {
     $featuredJobs = [];
-    $sql = "SELECT jobs.id, jobs.title, jobs.companyName, jobs.location, jobs.salaryRange, jobs.duration 
-        FROM featuredJobs 
-        JOIN jobs ON featuredJobs.jobId = jobs.id 
-        WHERE jobs.status = 'active' 
-        ORDER BY RAND() 
-        LIMIT 6";
+
+    $sql = "SELECT 
+                jobs.id, 
+                jobs.title, 
+                jobs.companyName, 
+                jobs.location, 
+                jobs.salaryRange, 
+                jobs.type, 
+                jobs.duration, 
+                jobs.datePosted,
+                jobs.skills,
+                jobs.description,
+                jobs.requirements,
+                jobs.experience
+            FROM featuredJobs 
+            JOIN jobs ON featuredJobs.jobId = jobs.id 
+            WHERE jobs.status = 'active' 
+            ORDER BY RAND() 
+            LIMIT 6";
+
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
+    if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $featuredJobs[] = $row;
         }
-        return $featuredJobs;
     } else {
-        echo "Aucun emploi en vedette trouvé.";
-        return [];
+        // Optional: log or handle no results
+        // echo "Aucun emploi en vedette trouvé.";
     }
+
+    return $featuredJobs;
 }
+
+
 
 function getRandomTestimonials($conn, $number) {
     $testimonials = array();

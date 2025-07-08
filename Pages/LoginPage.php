@@ -1,3 +1,34 @@
+<?php
+session_start();
+
+// Auto-login from "remember me" cookie
+if (!isset($_SESSION['userId']) && isset($_COOKIE['remember_me'])) {
+    require_once '../includes/db-connection.php';
+    $conn = connectDB();
+
+    $userId = $_COOKIE['remember_me'];
+    $stmt = $conn->prepare("SELECT * FROM users WHERE userId = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result && $result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        $_SESSION['userId'] = $user['userId'];
+        $_SESSION['role'] = $user['role'];
+        $_SESSION['user'] = $user;
+        $_SESSION['login_success'] = "Welcome back, " . $user['username'] . "!";
+
+        $redirectPage = ($user['role'] === 'employer') ? "EmployerPage.php" : "HomePage.php";
+        header("Location: $redirectPage");
+        exit();
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,9 +45,8 @@
         <i class="fas fa-arrow-left"></i>
         Retourner
     </a>
-  <button class="top-right-btn" onclick="window.location.href='admin.php'">CONNEXION ADMIN</button>
 
-  <img src="../assets/images/login.png" class="fade-bg" alt="background" />
+  <img src="../assets/images/login.png" class="fade-bg" alt="background"/>
   <div class="blue-overlay"></div>
   <form class="form-container" action="../controllers/check-login.php" method="POST">
     <h3>Content de vous revoir</h3>
@@ -51,7 +81,6 @@
       </p>
     </div>
     <?php
-      session_start();
       if (isset($_SESSION['login_error'])) {
           echo '<div class="error">' . htmlspecialchars($_SESSION['login_error']) . '</div>';
           unset($_SESSION['login_error']);

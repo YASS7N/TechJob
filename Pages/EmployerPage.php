@@ -26,7 +26,7 @@ if (isset($_SESSION['login_success'])) {
 <link rel="stylesheet" href="../styles/EmployerPage/employerStyles.css">
 <link rel="stylesheet" href="../styles/HomePage/footer.css">
   <link rel="stylesheet" href="../css/employerStyles.css">
-  <link rel="stylesheet" href="../css/candidats.css">
+  <link rel="stylesheet" href="../css/lescandidats.css">
   <link rel="stylesheet" href="../css/offres.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -139,24 +139,6 @@ if (isset($_SESSION['login_success'])) {
     </div>
   </div>
 </section>
-
-<script>
-  document.getElementById('btn-search-applicant').addEventListener('click', function() {
-    const query = document.getElementById('search-applicant').value.toLowerCase();
-    const applicants = document.querySelectorAll('.applicant-item');
-    applicants.forEach(function(applicant) {
-      const text = applicant.textContent.toLowerCase();
-      applicant.style.display = text.includes(query) ? '' : 'none';
-    });
-  });
-function toggleExtra(btn) {
-  const extras = btn.nextElementSibling;
-  if (extras.classList.contains('d-none')) {
-    extras.classList.remove('d-none');
-    btn.style.display = 'none';
-  }
-}
-</script>
 
 <section class="tab-pane fade" id="active-jobs">
 <div class="card border-0 shadow-sm rounded-3">
@@ -348,12 +330,6 @@ foreach ($allJobs as $job):
           <span><strong>Expérience:</strong> <span id="modalExperience"></span></span>
         </div>
 
-        <!-- Spécialisation -->
-        <div class="detail-card pink">
-          <i class="fa-solid fa-star"></i>
-          <span><strong>Spécialisation:</strong> <span id="modalSpecializations"></span></span>
-        </div>
-
         <!-- Compétences -->
         <div class="detail-card teal">
           <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -391,6 +367,39 @@ foreach ($allJobs as $job):
 <?php endif; ?>
 
 <script>
+// Applicant search
+document.querySelector('#search-applicant')?.addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    const applicants = document.querySelectorAll('.applicant-card');
+    applicants.forEach(applicant => {
+        const text = applicant.textContent.toLowerCase();
+        applicant.style.display = text.includes(query) ? '' : 'none';
+    });
+});
+
+// Active jobs search
+document.querySelector('#active-jobs input[type="text"]')?.addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    const jobs = document.querySelectorAll('#active-jobs .job-card, #active-jobs .applicant-card');
+    jobs.forEach(job => {
+        const text = job.textContent.toLowerCase();
+        job.style.display = text.includes(query) ? '' : 'none';
+    });
+});
+
+// All jobs search
+document.querySelector('#all-jobs input[type="text"]')?.addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    const jobs = document.querySelectorAll('#all-jobs .job-card');
+    jobs.forEach(job => {
+        const text = job.textContent.toLowerCase();
+        job.style.display = text.includes(query) ? '' : 'none';
+    });
+});
+</script>
+
+
+<script>
 function showJobDetails(job) {
     document.getElementById('modalJobTitle').innerText = job.title;
     document.getElementById('modalCompany').innerText = job.companyName;
@@ -399,7 +408,6 @@ function showJobDetails(job) {
     document.getElementById('modalDuration').innerText = job.duration;
     document.getElementById('modalSalary').innerText = job.salaryRange ?? 'Non spécifié';
     document.getElementById('modalExperience').innerText = job.experience;
-    document.getElementById('modalSpecializations').innerText = job.specializations;
     document.getElementById('modalSkills').innerText = job.skills ?? '—';
     document.getElementById('modalDescription').innerText = job.description;
     document.getElementById('modalRequirements').innerText = job.requirements;

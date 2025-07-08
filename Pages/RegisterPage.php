@@ -40,7 +40,7 @@ if (isset($_SESSION['registration_success'])) {
 
 $role = isset($_GET['role']) ? htmlspecialchars($_GET['role']) : '';
 ?>
-
+<div class="page-wrapper">
 <img class="fade-bg" src="../assets/images/login.png" alt="background">
 <div class="blue-overlay"></div>
 <form class="form-container" action="../controllers/check-register.php" method="POST">
@@ -96,7 +96,7 @@ $role = isset($_GET['role']) ? htmlspecialchars($_GET['role']) : '';
         <p>Vous avez déjà un compte ? <a href="./LoginPage.php">Connectez-vous ici !</a></p>
     </div>
 </form>
-
+</div>
 <script src="../js/registerForm.js"></script>
 
 </body>
